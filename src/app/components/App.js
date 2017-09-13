@@ -1,15 +1,54 @@
 import React from 'react';
-import LoginButton from './LoginButton';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './Header';
+import Main from './Main';
+import { getUserInfo } from '../helpers/spotify';
 
-class App extends React.Component {
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      token: "",
+      username: ""
+    }
+
+    this.setToken = this.setToken.bind(this);
+  }
+
+  componentDidMount() {
+    const token = document.cookie ?
+      document.cookie.split('&')[0].match(/token=(.*)/)[1] :
+      ''
+    if (token) {
+      this.setToken(token);
+      this.setUserName(token)
+    }
+  }
+
+  setUserName(token) {
+    getUserInfo(token).then( response => {
+      this.setState({
+        username: response.data.display_name
+      })
+    })
+  }
+
+  setToken(token) {
+    this.setState({
+      token: token
+    })
+  }
+
   render() {
     return (
       <div>
-        <h1>App Component</h1>
-        <LoginButton />
+        <Header />
+        <Main
+          token={this.state.token}
+          username={this.state.username}
+        />
       </div>
     )
   }
 };
-
-export default App;

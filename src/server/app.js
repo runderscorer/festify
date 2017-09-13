@@ -27,14 +27,7 @@ app.get('/callback', (req, res) => {
     json: true
   };
 
-  console.log('code: ', code);
-  console.log('authOptions: ', authOptions);
-
   request.post(authOptions, (error, response, body) => {
-    console.log('authOptions: ', authOptions);
-    console.log('response: ', response);
-    console.log('body: ', body);
-
     const access_token = body.access_token;
     const refresh_token = body.refresh_token;
 
@@ -49,17 +42,17 @@ app.get('/callback', (req, res) => {
       console.log('request to spotify:', body);
     });
 
-    console.log('going to redirect...')
-    res.redirect('/#' +
-      queryString.stringify({
-        access_token: access_token,
-        refresh_token: refresh_token
-    }));
-    console.log('redirected???')
+    res.cookie('token', access_token);
+    res.redirect('/');
+    // res.redirect('/#' +
+    //   queryString.stringify({
+    //     access_token: access_token,
+    //     refresh_token: refresh_token
+    // }));
   });
 })
 
-app.get('/', (req, res) => {
+app.get(['/', '/top-artists', '/top-tracks'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../index.html'));
 });
 
