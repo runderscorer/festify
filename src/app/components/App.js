@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './Header';
+import LoginButton from './LoginButton';
 import Main from './Main';
 import { getUserInfo } from '../helpers/spotify';
 
@@ -9,8 +10,8 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      token: "",
-      username: ""
+      token: '',
+      username: ''
     }
 
     this.setToken = this.setToken.bind(this);
@@ -41,6 +42,12 @@ export default class App extends React.Component {
   }
 
   render() {
+    if (this.state.token === '') {
+      return (
+        <LoginButton />
+      )
+    }
+
     return (
       <div>
         <Header username={this.state.username} />

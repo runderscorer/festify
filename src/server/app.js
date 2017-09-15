@@ -12,7 +12,6 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
 app.get('/callback', (req, res) => {
-  console.log('in /callback');
   const code = req.query.code || null;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -37,18 +36,8 @@ app.get('/callback', (req, res) => {
       json: true
     };
 
-    // use the access token to access the Spotify Web API
-    request.get(options, (error, response, body) => {
-      console.log('request to spotify:', body);
-    });
-
     res.cookie('token', access_token);
     res.redirect('/');
-    // res.redirect('/#' +
-    //   queryString.stringify({
-    //     access_token: access_token,
-    //     refresh_token: refresh_token
-    // }));
   });
 })
 
@@ -57,8 +46,8 @@ app.get('/log-out', (req, res) => {
   res.redirect('/');
 })
 
-app.get(['/', '/top-artists', '/top-tracks'], (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../index.html'));
+app.get(['/', '/top-artists', '/top-tracks', '/top-artists/*'], (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
 
 module.exports = app;

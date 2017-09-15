@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 export function getArtist(access_token, id) {
@@ -19,4 +18,9 @@ export function getTop(access_token, type) {
 export function getUserInfo(access_token) {
   const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
   return axios.get('https://api.spotify.com/v1/me', config);
+}
+
+export function getUserRecentlyPlayed(access_token) {
+  const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
+  return axios.get('https://api.spotify.com/v1/me/player/recently-played?limit=20', config);
 }

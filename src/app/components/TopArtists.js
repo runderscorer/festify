@@ -14,6 +14,7 @@ export default class TopArtists extends React.Component {
   }
 
   componentDidMount() {
+    console.log('TopArtists props: ', this.props)
     getTop(this.props.token, 'artists').then(response => {
       this.setState({
         artists: response.data.items

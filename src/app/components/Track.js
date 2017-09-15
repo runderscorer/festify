@@ -3,7 +3,7 @@ import { truncateString } from '../helpers/truncate.js';
 
 const Track = (props) => {
   const { track } = props;
-  console.log('track: ', track)
+  
   return (
     <div className='track'>
       <img src={track.album.images[1].url} />

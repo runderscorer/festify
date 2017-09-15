@@ -26,9 +26,8 @@ export default class Artist extends React.Component {
 
     getArtistAlbums(token, id).then(response => {
       console.log('artist albums response: ', response.data.items)
-      const albums = response.data.items
       this.setState({
-        albums: albums
+        albums: response.data.items
       })
     })
   }

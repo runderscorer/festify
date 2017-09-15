@@ -1,17 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Carter+One|Quicksand:400,500,700|Righteous');
 
-p, span, h1, h2, h3, a {
+* {
   font-family: 'Quicksand';
 }
 
+a {
+  color: black;
+}
+
 nav {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 2em;
 }
 
 nav a {
-  color: black;
   margin-right: 1em;
   text-decoration: none;
+}
+
+.log-out a {
+  margin-right: 0;
 }
 
 .active {
@@ -34,22 +43,31 @@ nav a {
   font-size: .9em;
 }
 
-.artist-info {
+.artist-info, .user-info {
+  background-image: url('/assets/images/pink-mountains.jpeg');
+  background-size: cover;
   margin-bottom: 2em;
+  padding: 2em 0;
   text-align: center;
 }
 
-.artist-name {
+.artist-info img {
+  max-height: 350px;
+}
+
+.artist-name, .username {
+  color: white;
   font-family: 'Righteous';
   font-size: 4em;
   margin: 0;
+  padding: .1em 0;
 }
 
 .artist-album, .track {
   border-bottom: 1px solid lightgray;
   display: inline-block;
   margin-right: 1em;
-  padding-top: 1em;
+  padding-top: 2em;
 }
 
 .album-name p, .track-details p {
@@ -57,7 +75,7 @@ nav a {
   text-align: center;
 }
 
-.genres {
+.followers, .genres {
   background-color: black;
   color: white;
 }
@@ -85,4 +103,8 @@ nav a {
   display: inline-block;
   font-family: 'Carter One';
   margin: 0 .5em;
+}
+
+.artist-albums, .recently-played, .top-tracks {
+  text-align: center;
 }
