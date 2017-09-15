@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Carter+One|Quicksand:400,500,700|Righteous');
+
+p, span, h1, h2, h3, a {
+  font-family: 'Quicksand';
+}
+
+nav {
+  margin-bottom: 2em;
+}
+
+nav a {
+  color: black;
+  margin-right: 1em;
+  text-decoration: none;
+}
+
+.active {
+  font-weight: 500;
+}
+
+.headliner {
+  font-size: 4em;
+}
+
+.mainLineup {
+  font-size: 2.2em;
+}
+
+.midLineup {
+  font-size: 1.5em;
+}
+
+.bottomLineup {
+  font-size: .9em;
+}
+
+.artist-info {
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.artist-name {
+  font-family: 'Righteous';
+  font-size: 4em;
+  margin: 0;
+}
+
+.artist-album, .track {
+  border-bottom: 1px solid lightgray;
+  display: inline-block;
+  margin-right: 1em;
+  padding-top: 1em;
+}
+
+.album-name p, .track-details p {
+  line-height: .5em;
+  text-align: center;
+}
+
+.genres {
+  background-color: black;
+  color: white;
+}
+
+.lineup-announcement {
+  background-image: url('/assets/images/pink-mountains.jpeg');
+  background-size: cover;
+  display: flex;
+}
+
+.bands {
+  border-bottom: 2px dotted white;
+  border-top: 2px dotted white;
+  margin: 5em;
+  padding: 4em;
+  text-align: center;
+}
+
+.bands .tier a {
+  text-decoration: none;
+}
+
+.bands .tier span {
+  color: white;
+  display: inline-block;
+  font-family: 'Carter One';
+  margin: 0 .5em;
+}

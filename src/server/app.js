@@ -52,6 +52,11 @@ app.get('/callback', (req, res) => {
   });
 })
 
+app.get('/log-out', (req, res) => {
+  res.cookie('token', '');
+  res.redirect('/');
+})
+
 app.get(['/', '/top-artists', '/top-tracks'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../index.html'));
 });

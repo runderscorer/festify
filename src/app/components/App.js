@@ -43,11 +43,8 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-        <Main
-          token={this.state.token}
-          username={this.state.username}
-        />
+        <Header username={this.state.username} />
+        <Main token={this.state.token} />
       </div>
     )
   }

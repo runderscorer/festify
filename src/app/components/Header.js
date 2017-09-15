@@ -1,10 +1,25 @@
 import React from 'react';
+import LoginButton from './LoginButton';
+import Navigation from './Navigation';
 
-const Header = () => {
-  return (
-    <div>
-    </div>
-  )
-};
+export default class Header extends React.Component {
+  renderHeader() {
+    const { username } = this.props;
 
-export default Header;
+    if (username) {
+      return (
+        <Navigation username={username} />
+      )
+    } else {
+      return (
+        <LoginButton />
+      )
+    }
+  }
+
+  render() {
+    return (
+      this.renderHeader()
+    )
+  }
+}

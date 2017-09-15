@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getTop } from '../helpers/spotify.js';
 
 export default class TopArtists extends React.Component {
@@ -8,6 +9,8 @@ export default class TopArtists extends React.Component {
     this.state = {
       artists: []
     }
+
+    this.renderLineup = this.renderLineup.bind(this);
   }
 
   componentDidMount() {
@@ -18,21 +21,32 @@ export default class TopArtists extends React.Component {
     })
   }
 
-  render() {
-    const { artists } = this.state;
-    console.log('artists: ', artists)
-
+  renderLineup(artists, tier) {
     return (
-      <div>
-        <h3>Top Artists</h3>
+      <div className={`${tier} tier`}>
         {artists.map(artist => {
           return (
-            <div key={artist.id}>
-              <p>Name: {artist.name}</p>
-              <p>Genres: {artist.genres.join(', ')}</p>
-            </div>
+            <Link to={`/top-artists/${artist.id}`} key={artist.id} >
+              <span>{artist.name}</span>
+            </Link>
           )
         })}
+      </div>
+    )
+  }
+
+  render() {
+    const { artists } = this.state;
+    return (
+      <div className='top-artists'>
+        <div className='lineup-announcement'>
+          <div className='bands'>
+            {this.renderLineup(artists.slice(0, 1), 'headliner')}
+            {this.renderLineup(artists.slice(1, 5), 'mainLineup')}
+            {this.renderLineup(artists.slice(6, 12), 'midLineup')}
+            {this.renderLineup(artists.slice(13, artists.length - 1), 'bottomLineup')}
+          </div>
+        </div>
       </div>
     )
   }
