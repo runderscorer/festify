@@ -2,12 +2,10 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = (props) => {
-  const { username } = props;
-
   return (
     <nav>
       <div>
-        <NavLink exact to='/'>Welcome, {username}</NavLink>
+        <NavLink exact to='/'>Home</NavLink>
         <NavLink to='/top-tracks'>Top Tracks</NavLink>
         <NavLink to='/top-artists'>Top Artists</NavLink>
       </div>

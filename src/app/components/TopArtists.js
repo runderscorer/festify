@@ -1,25 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getTop } from '../helpers/spotify.js';
+import Filters from './Filters';
+import { getTopArtistsOrTracks } from '../helpers/spotify.js';
 
 export default class TopArtists extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      artists: []
+      artists: [],
+      type: 'artists',
+      timeRange: 'medium_term'
     }
 
     this.renderLineup = this.renderLineup.bind(this);
+    this.setActiveTimeRange = this.setActiveTimeRange.bind(this);
+    this.setTopArtistsOrTracks = this.setTopArtistsOrTracks.bind(this);
+    this.timeRange = this.timeRange.bind(this);
   }
 
   componentDidMount() {
-    console.log('TopArtists props: ', this.props)
-    getTop(this.props.token, 'artists').then(response => {
+    const timeRange = this.timeRange();
+
+    this.setState({
+      timeRange: timeRange
+    }, () => {
+      this.setTopArtistsOrTracks(this.state.timeRange)
+    })
+  }
+
+  setActiveTimeRange(timeRange) {
+    this.setState({
+      timeRange: timeRange
+    })
+  }
+
+  setTopArtistsOrTracks(timeRange) {
+    getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
       this.setState({
         artists: response.data.items
       })
     })
+  }
+
+  timeRange() {
+    const queryString = this.props.location.search;
+    return queryString.substr(queryString.indexOf('=') + 1, queryString.length) || this.state.timeRange;
   }
 
   renderLineup(artists, tier) {
@@ -37,9 +63,17 @@ export default class TopArtists extends React.Component {
   }
 
   render() {
-    const { artists } = this.state;
+    const { artists, timeRange } = this.state;
+
     return (
       <div className='top-artists'>
+        <div className='filters'>
+          <Filters
+            activeFilter={timeRange}
+            activeFilterCallback={this.setActiveTimeRange}
+            filterCallback={this.setTopArtistsOrTracks}
+          />
+        </div>
         <div className='lineup-announcement'>
           <div className='bands'>
             {this.renderLineup(artists.slice(0, 1), 'headliner')}

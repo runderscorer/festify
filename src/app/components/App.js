@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Header from './Header';
 import LoginButton from './LoginButton';
 import Main from './Main';
-import { getUserInfo } from '../helpers/spotify';
+import Navigation from './Navigation';
+import { refreshToken } from '../helpers/spotify';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -11,28 +11,26 @@ export default class App extends React.Component {
 
     this.state = {
       token: '',
-      username: ''
     }
 
     this.setToken = this.setToken.bind(this);
   }
 
   componentDidMount() {
-    const token = document.cookie ?
-      document.cookie.split('&')[0].match(/token=(.*)/)[1] :
-      ''
+    const tokenCookie = document.cookie.match(/token=([^;]*).*$/);
+    const refreshCookie = document.cookie.match(/refresh=([^;]*).*$/);
+    const token = tokenCookie ? tokenCookie[1] : null;
+    const refresh =  refreshCookie ? refreshCookie[1] : null;
+
     if (token) {
       this.setToken(token);
-      this.setUserName(token)
+    } else if (!token && refresh) {
+      refreshToken(refresh).then(response => {
+        this.setToken(response.data.access_token)
+      });
+    } else {
+      return null;
     }
-  }
-
-  setUserName(token) {
-    getUserInfo(token).then( response => {
-      this.setState({
-        username: response.data.display_name
-      })
-    })
   }
 
   setToken(token) {
@@ -42,17 +40,17 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.state.token === '') {
+    const { token } = this.state;
+
+    if (token) {
       return (
-        <LoginButton />
+        <div>
+          <Navigation />
+          <Main token={this.state.token} />
+        </div>
       )
     }
 
-    return (
-      <div>
-        <Header username={this.state.username} />
-        <Main token={this.state.token} />
-      </div>
-    )
+    return <LoginButton />
   }
 };

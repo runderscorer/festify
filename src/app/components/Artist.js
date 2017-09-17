@@ -10,6 +10,9 @@ export default class Artist extends React.Component {
       albums: [],
       artist: {}
     }
+
+    this.renderArtistAlbums = this.renderArtistAlbums.bind(this);
+    this.renderArtistInfo = this.renderArtistInfo.bind(this);
   }
 
   componentWillMount() {
@@ -17,7 +20,6 @@ export default class Artist extends React.Component {
     const { token } = this.props;
 
     getArtist(token, id).then(response => {
-      console.log('artist response: ', response.data)
       const artist = response.data;
       this.setState({
         artist: artist
@@ -25,36 +27,43 @@ export default class Artist extends React.Component {
     })
 
     getArtistAlbums(token, id).then(response => {
-      console.log('artist albums response: ', response.data.items)
       this.setState({
         albums: response.data.items
       })
     })
   }
 
+  renderArtistInfo(artist) {
+    return (
+      <div className='artist-info'>
+        <img src={artist.images[1].url} />
+        <p className='artist-name'>{artist.name}</p>
+        <div className='genres'>
+          <span>{artist.genres.slice(0, 3).join(' + ')}</span>
+        </div>
+      </div>
+    )
+  }
+
+  renderArtistAlbums(albums) {
+    return (
+      <div className='artist-albums'>
+        {albums.map(album => {
+          return (
+            <ArtistAlbum key={album.id} album={album} />
+          )
+        })}
+      </div>
+    )
+  }
+
   render() {
     const { artist, albums } = this.state;
 
-    if (Object.keys(artist).length < 1) {
-      return null;
-    }
-
     return (
       <div className='artist'>
-        <div className='artist-info'>
-          <img src={artist.images[1].url} />
-          <p className='artist-name'>{artist.name}</p>
-          <div className='genres'>
-            <span>{artist.genres.slice(0, 3).join(' + ')}</span>
-          </div>
-        </div>
-        <div className='artist-albums'>
-          {albums.map(album => {
-            return (
-              <ArtistAlbum key={album.id} album={album} />
-            )
-          })}
-        </div>
+        {Object.keys(artist).length > 0 ? this.renderArtistInfo(artist) : null}
+        {albums.length > 0 ? this.renderArtistAlbums(albums) : null}
       </div>
     )
   }

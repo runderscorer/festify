@@ -5,15 +5,15 @@ var Dotenv = require('dotenv-webpack');
 module.exports = {
   entry: './src/app/index.js',
   output: {
-    path: __dirname,
-    filename: 'dist/bundle.js',
+    path: path.join(__dirname, './dist'),
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
       {
         test: /.jsx?$/,
         loader: 'babel-loader',
-        include: path.join(__dirname, 'src'),
+        include: path.join(__dirname, '/src/app'),
         exclude: /node_modules/,
         query: {
           presets: ['es2015', 'react']

@@ -108,3 +108,14 @@ nav a {
 .artist-albums, .recently-played, .top-tracks {
   text-align: center;
 }
+
+.filters {
+  padding: 1em 0;
+  text-align: center;
+}
+
+.filter {
+  cursor: pointer;
+  margin-right: 1em;
+  text-decoration: none;
+}
