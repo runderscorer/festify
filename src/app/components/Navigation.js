@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navigation = (props) => {
+  const { clickHandler } = props;
+
   return (
     <nav>
       <div>
@@ -10,7 +12,7 @@ const Navigation = (props) => {
         <NavLink to='/top-artists'>Top Artists</NavLink>
       </div>
       <div className='log-out'>
-        <a href='/log-out'>Log Out</a>
+        <Link to='/' onClick={clickHandler}>Log Out</Link>
       </div>
     </nav>
   )

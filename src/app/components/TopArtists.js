@@ -36,11 +36,21 @@ export default class TopArtists extends React.Component {
   }
 
   setTopArtistsOrTracks(timeRange) {
+    const cachedArtists = sessionStorage.getItem(`artists[${timeRange}]`);
+
+    if (cachedArtists) {
+      this.setState({
+        artists: JSON.parse(cachedArtists)
+      });
+      return;
+    }
+
     getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
       this.setState({
         artists: response.data.items
-      })
-    })
+      });
+      sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
+    });
   }
 
   timeRange() {

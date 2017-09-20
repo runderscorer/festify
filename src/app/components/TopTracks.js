@@ -27,7 +27,7 @@ export default class TopTracks extends React.Component {
       this.setTopArtistsOrTracks(this.state.timeRange);
     })
   }
-  
+
   setActiveTimeRange(timeRange) {
     this.setState({
       timeRange: timeRange
@@ -35,11 +35,21 @@ export default class TopTracks extends React.Component {
   }
 
   setTopArtistsOrTracks(timeRange) {
+    const cachedTracks = sessionStorage.getItem(`tracks[${timeRange}]`);
+
+    if (cachedTracks) {
+      this.setState({
+        tracks: JSON.parse(cachedTracks)
+      });
+      return;
+    }
+
     getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
       this.setState({
         tracks: response.data.items
-      })
-    })
+      });
+      sessionStorage.setItem(`tracks[${timeRange}]`, JSON.stringify(this.state.tracks));
+    });
   }
 
   timeRange() {

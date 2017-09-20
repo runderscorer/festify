@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import Main from './Main';
@@ -13,6 +14,7 @@ export default class App extends React.Component {
       token: '',
     }
 
+    this.clearSession = this.clearSession.bind(this);
     this.setToken = this.setToken.bind(this);
   }
 
@@ -33,6 +35,16 @@ export default class App extends React.Component {
     }
   }
 
+  clearSession() {
+    Object.keys(sessionStorage).forEach(key => {
+      sessionStorage.removeItem(key);
+    });
+    this.setState({
+      token: ''
+    });
+    axios.get('/log-out');
+  }
+
   setToken(token) {
     this.setState({
       token: token
@@ -45,7 +57,7 @@ export default class App extends React.Component {
     if (token) {
       return (
         <div>
-          <Navigation />
+          <Navigation clickHandler={this.clearSession} />
           <Main token={this.state.token} />
         </div>
       )

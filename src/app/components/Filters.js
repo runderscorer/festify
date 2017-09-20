@@ -3,28 +3,12 @@ import Filter from './Filter';
 import { timeRangeFilters } from '../constants/filters'
 
 export default class Filters extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeFilter: this.props.activeFilter
-    }
-  }
-
-  componentWillReceiveProps() {
-    const { activeFilter } = this.props;
-
-    this.setState({
-      activeFilter: activeFilter
-    })
-  }
-
   render() {
     const {
+      activeFilter,
       activeFilterCallback,
       filterCallback
     } = this.props;
-    const { activeFilter } = this.state;
 
     return (
       <div className='filters'>
