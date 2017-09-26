@@ -8,6 +8,19 @@ a {
   color: black;
 }
 
+button {
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}
+
+input[type='text'] {
+  font-size: 1em;
+  line-height: 2em;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -105,7 +118,7 @@ nav a {
   margin: 0 .5em;
 }
 
-.artist-albums, .recently-played, .top-tracks {
+.artist-albums, .recently-played, .tracks {
   text-align: center;
 }
 
@@ -118,4 +131,101 @@ nav a {
   cursor: pointer;
   margin-right: 1em;
   text-decoration: none;
+}
+
+.export {
+  background-color: black;
+  text-align: center;
+  width: 100%;
+}
+
+.export span button {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  outline: none;
+}
+
+.tracks-container {
+  display: -webkit-box;
+  overflow-x: hidden;
+}
+
+.playlist-form {
+  background-color: rgba(black, .8);
+  transition: transform 200ms ease-in-out;
+  width: 100%;
+}
+
+.playlist-form form {
+  background-color: white;
+  padding: 2em 1em;
+}
+
+.playlist-form form ul {
+  padding: 0;
+  margin-bottom: 2em;
+}
+
+.playlist-form input[type='text'] {
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.playlist-form input:last-child {
+  font-size: 1em;
+}
+
+.playlist-form form ul li {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.playlist-form li:nth-child(even) {
+  background-color: lightcyan;
+}
+
+.playlist-form form ul li span button {
+  background: none;
+  border: none;
+}
+
+.playlist-form label {
+  display: block;
+}
+
+.playlist-form-entered, .playlist-form-exiting {
+  transform: translate(-100%);
+}
+
+.playlist-form-entering, .playlist-form-exited {
+  transform: translate(0%);
+}
+
+.modal {
+  background: white;
+  border: solid 1px black;
+  bottom: 20%;
+  box-shadow: 0 0 1em .1em black;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  left: 20%;
+  justify-content: space-between;
+  position: fixed;
+  right: 20%;
+  text-align: center;
+  top: 20%;
+}
+
+button.btn {
+  background: lightcoral;
+  border: none;
+  color: white;
+  font-size: 1em;
+  padding: 1em;
+  width: 100%;
 }

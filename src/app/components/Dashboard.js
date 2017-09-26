@@ -19,16 +19,26 @@ export default class Dashboard extends React.Component {
   componentDidMount() {
     const { token } = this.props;
 
-    getUserInfo(token).then(response => {
-      this.setState({
-        user: response.data
-      })
-    })
-
     getUserRecentlyPlayed(token).then(response => {
       this.setState({
         recentlyPlayed: response.data.items
       })
+    })
+
+    const cachedUser = JSON.parse(sessionStorage.getItem('user'));
+
+    if (cachedUser) {
+      this.setState({
+        user: cachedUser
+      });
+      return
+    }
+
+    getUserInfo(token).then(response => {
+      this.setState({
+        user: response.data
+      });
+      sessionStorage.setItem('user', JSON.stringify(this.state.user));
     })
   }
 

@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+export function addTracksToPlaylist(access_token, userId, playlistId, data) {
+  const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
+  return axios.post(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistId}/tracks`, data, config);
+}
+
+export function createPlaylist(access_token, userId, data) {
+  const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
+  return axios.post(`https://api.spotify.com/v1/users/${userId}/playlists`, data, config);
+}
+
 export function getArtist(access_token, id) {
   const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
   return axios.get(`https://api.spotify.com/v1/artists/${id}`, config);
