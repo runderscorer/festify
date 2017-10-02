@@ -1,6 +1,7 @@
 import React from 'react';
 import { Transition } from 'react-transition-group';
 import Filters from './Filters';
+import Loader from './Loader';
 import Modal from './Modal';
 import PlaylistForm from './PlaylistForm';
 import Track from './Track';
@@ -121,6 +122,10 @@ export default class TopTracks extends React.Component {
       tracks
     } = this.state;
 
+    if (tracks.length === 0) {
+      return <Loader />
+    }
+    
     return (
       <div className='top-tracks'>
         {this.renderModal()}

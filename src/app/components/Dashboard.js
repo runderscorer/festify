@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from './Loader';
 import Track from './Track';
 import { getUserInfo, getUserRecentlyPlayed } from '../helpers/spotify';
 import { dedupeTracks } from '../helpers/dedupe'
@@ -70,10 +71,14 @@ export default class Dashboard extends React.Component {
   render() {
     const { recentlyPlayed, user } = this.state;
 
+    if (recentlyPlayed.length === 0) {
+      return <Loader />
+    }
+    
     return (
       <div className='user'>
         {Object.keys(user).length > 0 ? this.renderUserInfo(user) : null}
-        {Object.keys(recentlyPlayed).length > 0 ? this.renderRecentlyPlayed(recentlyPlayed) : null}
+        {this.renderRecentlyPlayed(recentlyPlayed)}
       </div>
     )
   }

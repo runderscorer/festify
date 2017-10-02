@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Loader from './Loader';
 import Filters from './Filters';
 import { getTopArtistsOrTracks } from '../helpers/spotify.js';
 
@@ -75,6 +76,10 @@ export default class TopArtists extends React.Component {
   render() {
     const { artists, timeRange } = this.state;
 
+    if (artists.length === 0) {
+      return <Loader />
+    }
+    
     return (
       <div className='top-artists'>
         <div className='filters'>
