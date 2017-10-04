@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
 import Filters from './Filters';
@@ -79,7 +80,7 @@ export default class TopArtists extends React.Component {
     if (artists.length === 0) {
       return <Loader />
     }
-    
+
     return (
       <div className='top-artists'>
         <div className='filters'>
@@ -100,4 +101,8 @@ export default class TopArtists extends React.Component {
       </div>
     )
   }
-}
+};
+
+TopArtists.propTypes = {
+  token: PropTypes.string.isRequired
+};

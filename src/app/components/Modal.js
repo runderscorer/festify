@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = (props) => {
   const { message, playlistUrl, toggleModal } = props;
@@ -10,6 +11,12 @@ const Modal = (props) => {
       <button className='btn' onClick={toggleModal}>Close</button>
     </div>
   )
+};
+
+Modal.propTypes = {
+  message: PropTypes.string.isRequired,
+  playlistUrl: PropTypes.string.isRequired,
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default Modal;

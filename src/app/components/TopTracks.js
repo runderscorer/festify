@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import Filters from './Filters';
 import Loader from './Loader';
@@ -125,7 +126,7 @@ export default class TopTracks extends React.Component {
     if (tracks.length === 0) {
       return <Loader />
     }
-    
+
     return (
       <div className='top-tracks'>
         {this.renderModal()}
@@ -170,4 +171,8 @@ export default class TopTracks extends React.Component {
       </div>
     )
   }
-}
+};
+
+TopTracks.propTypes = {
+  token: PropTypes.string.isRequired
+};

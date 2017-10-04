@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Filter from './Filter';
 import { timeRangeFilters } from '../constants/filters'
 
@@ -28,4 +29,10 @@ export default class Filters extends React.Component {
       </div>
     )
   }
-}
+};
+
+Filters.propTypes = {
+  activeFilter: PropTypes.string.isRequired,
+  activeFilterCallback: PropTypes.func.isRequired,
+  filterCallback: PropTypes.func.isRequired
+};

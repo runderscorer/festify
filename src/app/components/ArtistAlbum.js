@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { truncateString } from '../helpers/truncate.js';
 
 const ArtistAlbum = ({ album }) => {
@@ -10,6 +11,10 @@ const ArtistAlbum = ({ album }) => {
       </div>
     </div>
   )
-}
+};
+
+ArtistAlbum.propTypes = {
+  album: PropTypes.object.isRequired
+};
 
 export default ArtistAlbum;

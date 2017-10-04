@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PlaylistFormTracks from './PlaylistFormTracks';
 import { Transition } from 'react-transition-group';
 import { addTracksToPlaylist, createPlaylist } from '../helpers/spotify';
@@ -168,4 +169,13 @@ export default class PlaylistForm extends React.Component {
       </div>
     )
   }
-}
+};
+
+PlaylistForm.propTypes = {
+  activeClassName: PropTypes.string.isRequired,
+  handleModal: PropTypes.func.isRequired,
+  timeRange: PropTypes.string.isRequired,
+  toggleSlider: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired,
+  tracks: PropTypes.array.isRequired
+};

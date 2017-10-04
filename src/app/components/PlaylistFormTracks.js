@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class PlaylistFormTracks extends React.Component {
   constructor(props) {
@@ -39,4 +40,8 @@ export default class PlaylistFormTracks extends React.Component {
       </ul>
     );
   }
-}
+};
+
+PlaylistFormTracks.propTypes = {
+  tracks: PropTypes.array.isRequired
+};

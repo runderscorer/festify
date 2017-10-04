@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default class Filter extends React.Component {
@@ -37,4 +38,10 @@ export default class Filter extends React.Component {
       </Link>
     )
   }
-}
+};
+
+Filter.propTypes = {
+  activeFilterCallback: PropTypes.func.isRequired,
+  filterCallback: PropTypes.func.isRequired,
+  filterValue: PropTypes.string.isRequired
+};

@@ -10,6 +10,6 @@ const Loader = (props) => {
       <span>Loading...</span>
     </div>
   )
-}
+};
 
 export default Loader;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loader from './Loader';
 import Track from './Track';
 import { getUserInfo, getUserRecentlyPlayed } from '../helpers/spotify';
@@ -74,7 +75,7 @@ export default class Dashboard extends React.Component {
     if (recentlyPlayed.length === 0) {
       return <Loader />
     }
-    
+
     return (
       <div className='user'>
         {Object.keys(user).length > 0 ? this.renderUserInfo(user) : null}
@@ -82,4 +83,8 @@ export default class Dashboard extends React.Component {
       </div>
     )
   }
-}
+};
+
+Dashboard.propTypes = {
+  token: PropTypes.string.isRequired
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ArtistAlbum from './ArtistAlbum';
 import { getArtist, getArtistAlbums } from '../helpers/spotify.js';
 
@@ -67,4 +68,8 @@ export default class Artist extends React.Component {
       </div>
     )
   }
-}
+};
+
+Artist.propTypes = {
+  token: PropTypes.string.isRequired
+};

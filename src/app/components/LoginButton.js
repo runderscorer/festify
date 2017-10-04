@@ -13,6 +13,6 @@ const LoginButton = (props) => {
       <a href={loginLink}>Log in with Spotify</a>
     </div>
   )
-}
+};
 
 export default LoginButton;
