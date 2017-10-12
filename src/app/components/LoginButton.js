@@ -9,8 +9,12 @@ const LoginButton = (props) => {
 
   const loginLink = `${authLink}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`
   return (
-    <div>
-      <a href={loginLink}>Log in with Spotify</a>
+    <div className='login'>
+      <div className='login-container'>
+        <a href={loginLink}>
+          Login with Spotify
+        </a>
+      </div>
     </div>
   )
 };
