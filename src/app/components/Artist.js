@@ -42,6 +42,7 @@ export default class Artist extends React.Component {
         <div className='genres'>
           <span>{artist.genres.slice(0, 3).join(' + ')}</span>
         </div>
+        <a href={artist.external_urls.spotify}>Listen on Spotify</a>
       </div>
     )
   }

@@ -52,6 +52,7 @@ export default class Dashboard extends React.Component {
         <div className='followers'>
           <span>{user.followers.total} followers</span>
         </div>
+        <a href={user.external_urls.spotify}>Listen on Spotify</a>
       </div>
     )
   }

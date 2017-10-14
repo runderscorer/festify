@@ -100,6 +100,13 @@ nav a {
   text-align: center;
 }
 
+.artist-info a, .user-info a {
+  color: white;
+  display: block;
+  padding-top: 1em;
+  text-decoration: none;
+}
+
 .artist-info img {
   max-height: 350px;
 }
