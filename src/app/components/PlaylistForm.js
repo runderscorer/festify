@@ -25,6 +25,7 @@ export default class PlaylistForm extends React.Component {
     };
 
     this.buildPlaylist = this.buildPlaylist.bind(this);
+    this.createAndBuildPlaylist = this.createAndBuildPlaylist.bind(this);
     this.handleButtonClick = this.handleButtonClick.bind(this);
     this.handleConfirmation = this.handleConfirmation.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -74,24 +75,20 @@ export default class PlaylistForm extends React.Component {
 
     const playlistData = { description: description, name: name, public: 'true' };
 
-    createPlaylist(token, userId, playlistData).then(response => {
-      this.setState({
-        playlistId: response.data.id,
-        playlistUrl: response.data.external_urls.spotify
-      });
-    }).then(() => {
-      return this.buildPlaylist(userId, this.state.playlistId, this.state.tracks);
-    }).then((response) => {
-      this.handleConfirmation({
-        playlistUrl: this.state.playlistUrl,
-        status: response.status
-      });
-    })
+    this.createAndBuildPlaylist(token, userId, playlistData);
   }
 
-  handleConfirmation(data) {
+  async createAndBuildPlaylist(token, userId, playlistData) {
+    let response = await createPlaylist(token, userId, playlistData);
+    await this.setState({ playlistId: response.data.id, playlistUrl: response.data.external_urls.spotify });
+
+    let status = await this.buildPlaylist(userId, this.state.playlistId, this.state.tracks);
+    this.handleConfirmation(this.state.playlistUrl, status);
+  }
+
+  handleConfirmation(playlistUrl, status) {
     this.props.toggleSlider();
-    this.props.handleModal(data);
+    this.props.handleModal(playlistUrl, status);
     this.resetPlaylist();
   }
 
@@ -99,12 +96,7 @@ export default class PlaylistForm extends React.Component {
     const { token } = this.state;
     const trackUris = tracks.map(track => { return track.uri });
 
-    return addTracksToPlaylist(token, userId, playlistId, trackUris).then(response => {
-      return {
-        data: response.data,
-        status: response.status
-      }
-    })
+    return addTracksToPlaylist(token, userId, playlistId, trackUris).then(response => response.status)
   }
 
   resetPlaylist() {
@@ -122,9 +114,7 @@ export default class PlaylistForm extends React.Component {
       return track.id !== trackId
     });
 
-    this.setState({
-      tracks: filteredTracks
-    });
+    this.setState({ tracks: filteredTracks });
   }
 
   validateInput() {
@@ -145,9 +135,7 @@ export default class PlaylistForm extends React.Component {
   }
 
   validateForm() {
-    this.setState({
-      formValid: this.state.nameValid && this.state.descriptionValid
-    })
+    this.setState({ formValid: this.state.nameValid && this.state.descriptionValid });
   }
 
   render() {

@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
-const Navigation = (props) => {
-  const { clickHandler } = props;
-
+const Navigation = ({ clickHandler }) => {
   return (
     <nav>
       <div>

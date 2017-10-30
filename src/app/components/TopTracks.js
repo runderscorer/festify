@@ -15,12 +15,12 @@ export default class TopTracks extends React.Component {
     this.state = {
       displayModal: false,
       displaySlider: false,
-      message: '',
       playlistUrl: '',
-      timeRange: 'medium_term',
+      playlistStatusCode: '',
+      timeRange: this.timeRange(),
       tracks: [],
       type: 'tracks',
-    }
+    };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleModal = this.handleModal.bind(this);
@@ -33,85 +33,65 @@ export default class TopTracks extends React.Component {
   }
 
   componentDidMount() {
-    const timeRange = this.timeRange();
-
-    this.setState({
-      timeRange: timeRange
-    }, () => {
-      this.setTopArtistsOrTracks(this.state.timeRange);
-    })
+    this.setTopArtistsOrTracks(this.state.timeRange);
   }
 
   handleClick(e) {
     e.preventDefault();
 
-    this.setState({
-      displaySlider: !this.state.displaySlider
-    })
+    this.setState({ displaySlider: !this.state.displaySlider });
   }
 
-  handleModal(data) {
-    const message = data.status === 201 ?
-      'Your playlist was created successfully!' :
-      'Something went wrong.'
-
+  handleModal(playlistUrl, status) {
     this.setState({
-      message: message,
-      playlistUrl: data.playlistUrl
+      playlistStatusCode: status,
+      playlistUrl: playlistUrl
     }, this.toggleModal);
   }
 
   setActiveTimeRange(timeRange) {
-    this.setState({
-      timeRange: timeRange
-    })
+    this.setState({ timeRange: timeRange });
   }
 
   setTopArtistsOrTracks(timeRange) {
     const cachedTracks = sessionStorage.getItem(`tracks[${timeRange}]`);
 
     if (cachedTracks) {
-      this.setState({
-        tracks: JSON.parse(cachedTracks)
-      });
+      this.setState({ tracks: JSON.parse(cachedTracks) });
       return;
     }
 
     getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
-      this.setState({
-        tracks: response.data.items
-      });
+      this.setState({ tracks: response.data.items });
       sessionStorage.setItem(`tracks[${timeRange}]`, JSON.stringify(this.state.tracks));
     });
+
   }
 
   timeRange() {
     const queryString = this.props.location.search;
-    return queryString.substr(queryString.indexOf('=') + 1, queryString.length) || this.state.timeRange;
+    return queryString.split('=')[1] || 'medium_term';
   }
 
   toggleModal() {
-    this.setState({
-      displayModal: !this.state.displayModal
-    })
+    this.setState({ displayModal: !this.state.displayModal });
   }
 
   toggleSlider() {
-    this.setState({
-      displaySlider: !this.state.displaySlider
-    })
+    this.setState({ displaySlider: !this.state.displaySlider });
   }
 
   renderModal() {
-    const { displayModal, message, playlistUrl } = this.state;
+    const { displayModal, playlistStatusCode, playlistUrl } = this.state;
+
     if (displayModal) {
       return (
         <Modal
-          message={message}
           playlistUrl={playlistUrl}
+          playlistStatusCode={playlistStatusCode}
           toggleModal={this.toggleModal}
-          />
-      )
+        />
+      );
     }
   }
 
@@ -124,7 +104,7 @@ export default class TopTracks extends React.Component {
     } = this.state;
 
     if (tracks.length === 0) {
-      return <Loader />
+      return <Loader />;
     }
 
     return (
@@ -169,7 +149,7 @@ export default class TopTracks extends React.Component {
           </Transition>
         </div>
       </div>
-    )
+    );
   }
 };
 

@@ -6,8 +6,8 @@ import { getUserInfo, getUserRecentlyPlayed } from '../helpers/spotify';
 import { dedupeTracks } from '../helpers/dedupe'
 
 export default class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       recentlyPlayed: [],
@@ -22,24 +22,18 @@ export default class Dashboard extends React.Component {
     const { token } = this.props;
 
     getUserRecentlyPlayed(token).then(response => {
-      this.setState({
-        recentlyPlayed: response.data.items
-      })
+      this.setState({ recentlyPlayed: response.data.items });
     })
 
     const cachedUser = JSON.parse(sessionStorage.getItem('user'));
 
     if (cachedUser) {
-      this.setState({
-        user: cachedUser
-      });
-      return
+      this.setState({ user: cachedUser });
+      return;
     }
 
     getUserInfo(token).then(response => {
-      this.setState({
-        user: response.data
-      });
+      this.setState({ user: response.data });
       sessionStorage.setItem('user', JSON.stringify(this.state.user));
     })
   }

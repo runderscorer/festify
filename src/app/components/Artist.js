@@ -4,8 +4,8 @@ import ArtistAlbum from './ArtistAlbum';
 import { getArtist, getArtistAlbums } from '../helpers/spotify.js';
 
 export default class Artist extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       albums: [],
@@ -22,16 +22,12 @@ export default class Artist extends React.Component {
 
     getArtist(token, id).then(response => {
       const artist = response.data;
-      this.setState({
-        artist: artist
-      })
-    })
+      this.setState({ artist: artist });
+    });
 
     getArtistAlbums(token, id).then(response => {
-      this.setState({
-        albums: response.data.items
-      })
-    })
+      this.setState({ albums: response.data.items });
+    });
   }
 
   renderArtistInfo(artist) {

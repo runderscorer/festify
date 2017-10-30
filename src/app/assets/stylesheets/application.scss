@@ -256,12 +256,20 @@ nav a {
   display: flex;
   flex-direction: column;
   height: 300px;
-  left: 20%;
   justify-content: space-between;
+  left: 20%;
   position: fixed;
   right: 20%;
   text-align: center;
   top: 20%;
+}
+
+.modal .message {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  justify-content: space-around;
+  text-align: center;
 }
 
 button.btn {

@@ -12,8 +12,8 @@ export default class TopArtists extends React.Component {
     this.state = {
       artists: [],
       type: 'artists',
-      timeRange: 'medium_term'
-    }
+      timeRange: this.timeRange()
+    };
 
     this.renderLineup = this.renderLineup.bind(this);
     this.setActiveTimeRange = this.setActiveTimeRange.bind(this);
@@ -22,42 +22,30 @@ export default class TopArtists extends React.Component {
   }
 
   componentDidMount() {
-    const timeRange = this.timeRange();
-
-    this.setState({
-      timeRange: timeRange
-    }, () => {
-      this.setTopArtistsOrTracks(this.state.timeRange)
-    })
+    this.setTopArtistsOrTracks(this.state.timeRange);
   }
 
   setActiveTimeRange(timeRange) {
-    this.setState({
-      timeRange: timeRange
-    })
+    this.setState({ timeRange: timeRange });
   }
 
   setTopArtistsOrTracks(timeRange) {
     const cachedArtists = sessionStorage.getItem(`artists[${timeRange}]`);
 
     if (cachedArtists) {
-      this.setState({
-        artists: JSON.parse(cachedArtists)
-      });
+      this.setState({ artists: JSON.parse(cachedArtists) });
       return;
     }
 
     getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
-      this.setState({
-        artists: response.data.items
-      });
+      this.setState({ artists: response.data.items });
       sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
     });
   }
 
   timeRange() {
     const queryString = this.props.location.search;
-    return queryString.substr(queryString.indexOf('=') + 1, queryString.length) || this.state.timeRange;
+    return queryString.split('=')[1] || 'medium_term';
   }
 
   renderLineup(artists, tier) {

@@ -7,8 +7,8 @@ import Navigation from './Navigation';
 import { refreshToken } from '../helpers/spotify';
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       token: '',
@@ -39,16 +39,12 @@ export default class App extends React.Component {
     Object.keys(sessionStorage).forEach(key => {
       sessionStorage.removeItem(key);
     });
-    this.setState({
-      token: ''
-    });
+    this.setState({ token: '' });
     axios.get('/log-out');
   }
 
   setToken(token) {
-    this.setState({
-      token: token
-    })
+    this.setState({ token: token });
   }
 
   render() {

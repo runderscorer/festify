@@ -1,20 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Modal = (props) => {
-  const { message, playlistUrl, toggleModal } = props;
-
+const Modal = ({ playlistStatusCode, playlistUrl, toggleModal }) => {
   return (
     <div className='modal'>
-      <p>{message}</p>
-      <a href={playlistUrl}>Listen on Spotify</a>
+      {renderMessage(playlistUrl, playlistStatusCode)}
       <button className='btn' onClick={toggleModal}>Close</button>
     </div>
   )
 };
 
+const renderMessage = (playlistUrl, statusCode) => {
+  if (statusCode === 201) {
+    return (
+      <div className='message'>
+        <p>Playlist successfully created!</p>
+        <a href={playlistUrl}>Listen on Spotify</a>
+      </div>
+    );
+  } else {
+    return (
+      <div className='message'>
+        <p>Something went wrong.</p>
+      </div>
+    );
+  }
+}
+
 Modal.propTypes = {
-  message: PropTypes.string.isRequired,
+  playlistStatusCode: PropTypes.number.isRequired,
   playlistUrl: PropTypes.string.isRequired,
   toggleModal: PropTypes.func.isRequired
 };

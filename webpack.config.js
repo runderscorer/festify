@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/app/index.js',
+  entry: ['babel-polyfill', './src/app/index.js'],
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'bundle.js',
@@ -16,7 +16,7 @@ module.exports = {
         include: path.join(__dirname, '/src/app'),
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'env', 'react']
         }
       },
       {

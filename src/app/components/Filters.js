@@ -3,32 +3,24 @@ import PropTypes from 'prop-types';
 import Filter from './Filter';
 import { timeRangeFilters } from '../constants/filters'
 
-export default class Filters extends React.Component {
-  render() {
-    const {
-      activeFilter,
-      activeFilterCallback,
-      filterCallback
-    } = this.props;
-
-    return (
-      <div className='filters'>
-        {Object.keys(timeRangeFilters).map(filterValue => {
-          return (
-            <Filter
-              active={filterValue === activeFilter}
-              activeFilterCallback={activeFilterCallback}
-              filterCallback={filterCallback}
-              filterParam='time-range'
-              filterValue={filterValue}
-              key={filterValue}
-              label={timeRangeFilters[filterValue]}
-            />
-          )
-        })}
-      </div>
-    )
-  }
+const Filters = ({ activeFilter, activeFilterCallback, filterCallback }) => {
+  return (
+    <div className='filters'>
+      {Object.keys(timeRangeFilters).map(filterValue => {
+        return (
+          <Filter
+            active={filterValue === activeFilter}
+            activeFilterCallback={activeFilterCallback}
+            filterCallback={filterCallback}
+            filterParam='time-range'
+            filterValue={filterValue}
+            key={filterValue}
+            label={timeRangeFilters[filterValue]}
+          />
+        )
+      })}
+    </div>
+  )
 };
 
 Filters.propTypes = {
@@ -36,3 +28,5 @@ Filters.propTypes = {
   activeFilterCallback: PropTypes.func.isRequired,
   filterCallback: PropTypes.func.isRequired
 };
+
+export default Filters;

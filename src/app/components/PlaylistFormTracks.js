@@ -13,9 +13,7 @@ export default class PlaylistFormTracks extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({
-      tracks: [...nextProps.tracks]
-    })
+    this.setState({ tracks: [...nextProps.tracks] });
   }
 
   handleClick(e) {

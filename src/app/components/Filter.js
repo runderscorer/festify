@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export default class Filter extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.handleClick = this.handleClick.bind(this);
   }
