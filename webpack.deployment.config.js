@@ -9,14 +9,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        warnings: false
-      }
-    })
-  ],
   module: {
     loaders: [
       {
@@ -40,7 +32,17 @@ module.exports = {
   },
   plugins: [
     new Dotenv({
-      path: './.env'
-    })
+      path: './.env.deployment'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+        'REACT_APP_CLIENT_ID': JSON.stringify(process.env.REACT_APP_CLIENT_ID),
+        'REACT_APP_CLIENT_SECRET': JSON.stringify(process.env.REACT_APP_CLIENT_SECRET),
+        'REACT_APP_REDIRECT_URI': JSON.stringify(process.env.REACT_APP_REDIRECT_URI)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin()
   ],
 };

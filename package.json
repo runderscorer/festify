@@ -35,7 +35,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && node src/server"
+    "start": "webpack && node src/server",
+    "start:prod": "node src/server",
+    "build:prod": "webpack --config webpack.deployment.config.js"
   },
   "author": "Rick Rieta",
   "license": "ISC"
