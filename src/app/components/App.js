@@ -4,6 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LoginButton from './LoginButton';
 import Main from './Main';
 import Navigation from './Navigation';
+import Home from './Home';
+import NavBar from './NavBar';
 import { refreshToken } from '../helpers/spotify';
 
 export default class App extends React.Component {
@@ -50,15 +52,11 @@ export default class App extends React.Component {
   render() {
     const { token } = this.state;
 
-    if (token) {
-      return (
-        <div>
-          <Navigation clickHandler={this.clearSession} />
-          <Main token={this.state.token} />
-        </div>
-      )
-    }
-
-    return <LoginButton />
+    return (
+      <div className={`app ${token ? 'logged-in' : 'logged-out'}`}>
+        <NavBar />
+        { token ? <Main token={token} /> : <Home /> }
+      </div>
+    )
   }
 };

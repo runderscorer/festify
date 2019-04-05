@@ -8,14 +8,11 @@ const LoginButton = (props) => {
   const scope = encodeURIComponent('user-read-email user-top-read playlist-modify-public playlist-modify-private user-read-currently-playing user-read-recently-played user-read-playback-state');
 
   const loginLink = `${authLink}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`
+
   return (
-    <div className='login'>
-      <div className='login-container'>
-        <a href={loginLink}>
-          Login with Spotify
-        </a>
-      </div>
-    </div>
+    <a className='login-btn' href={loginLink}>
+      Login with Spotify
+    </a>
   )
 };
 

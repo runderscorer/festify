@@ -8,6 +8,10 @@ module.exports = {
     path: path.join(__dirname, './dist'),
     filename: 'bundle.js',
   },
+  devServer: {
+    contentBase: path.join(__dirname, './dist/'),
+    filename: 'bundle.js'
+  },
   module: {
     loaders: [
       {
@@ -25,6 +29,19 @@ module.exports = {
           { loader: 'style-loader' },
           { loader: 'css-loader' },
           { loader: 'sass-loader' }
+        ]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+              disable: true
+            }
+          }
         ]
       }
     ],

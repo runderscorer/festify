@@ -25,6 +25,72 @@ input[type='text'] {
   line-height: 2em;
 }
 
+.app {
+  padding: 40px;
+}
+
+.logged-in {
+  background-color: #FFDF59;
+}
+
+.logged-out {
+  background-color: #3D74DD;
+}
+
+.home .container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 70%;
+}
+
+.home .container div {
+  margin: 0 auto;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 70px;
+}
+
+.navbar ul {
+  font-weight: bold;
+  list-style: none;
+  margin-top: 0px;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.navbar ul li:first-child {
+  margin-bottom: 20px;
+}
+
+.text-header {
+  margin-bottom: 50px;
+}
+
+.text-header h1 {
+  font-family: 'Futura';
+  font-size: 96px;
+  line-height: 96px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.text-header p {
+  font-size: 54px;
+}
+
+.login-btn {
+  color: white;
+  background: black;
+  border-radius: 20px;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -39,7 +105,6 @@ nav a {
 .login {
   align-items: center;
   background-size: cover;
-  background-image: url('/assets/images/pink-mountains.jpeg');
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,6 +139,10 @@ nav a {
 
 .active {
   font-weight: 500;
+}
+
+.home {
+  background-color: #3D74DD;
 }
 
 .headliner {
