@@ -1,12 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter, Route } from 'react-router-dom';
-import LoginButton from './LoginButton';
-import Main from './Main';
-import Navigation from './Navigation';
 import Home from './Home';
 import NavBar from './NavBar';
-import { refreshToken } from '../helpers/spotify';
+import Main from './Main';
+import { getUserInfo, refreshToken } from '../helpers/spotify';
 
 export default class App extends React.Component {
   constructor() {
@@ -14,10 +11,12 @@ export default class App extends React.Component {
 
     this.state = {
       token: '',
+      displayName: ''
     }
 
     this.clearSession = this.clearSession.bind(this);
     this.setToken = this.setToken.bind(this);
+    this.setDisplayName = this.setDisplayName.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +27,7 @@ export default class App extends React.Component {
 
     if (token) {
       this.setToken(token);
+      this.setDisplayName(token);
     } else if (!token && refresh) {
       refreshToken(refresh).then(response => {
         this.setToken(response.data.access_token)
@@ -49,13 +49,20 @@ export default class App extends React.Component {
     this.setState({ token: token });
   }
 
+  async setDisplayName(token) {
+    const response = await getUserInfo(token)
+    const { data: { display_name } } = response
+
+    this.setState({ displayName: display_name })
+  }
+
   render() {
-    const { token } = this.state;
+    const { displayName, token } = this.state;
 
     return (
       <div className={`app ${token ? 'logged-in' : 'logged-out'}`}>
         <NavBar />
-        { token ? <Main token={token} /> : <Home /> }
+        { token ? <Main token={token} displayName={displayName} /> : <Home /> }
       </div>
     )
   }

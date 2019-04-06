@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Loader from './Loader';
-import Filters from './Filters';
+import FilterOption from './FilterOption';
+import Lineup from './Lineup';
 import { getTopArtistsOrTracks } from '../helpers/spotify.js';
+import { timeRangeFilters } from '../constants/filters';
 
 export default class TopArtists extends React.Component {
   constructor(props) {
@@ -12,24 +13,39 @@ export default class TopArtists extends React.Component {
     this.state = {
       artists: [],
       type: 'artists',
-      timeRange: this.timeRange()
+      timeRange: this.timeRange(),
+      displayModal: false,
     };
 
-    this.renderLineup = this.renderLineup.bind(this);
     this.setActiveTimeRange = this.setActiveTimeRange.bind(this);
     this.setTopArtistsOrTracks = this.setTopArtistsOrTracks.bind(this);
     this.timeRange = this.timeRange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
     this.setTopArtistsOrTracks(this.state.timeRange);
   }
 
+  handleClick(value) {
+    this.setState({
+      displayModal: true,
+      timeRange: value
+    }, () => {
+      this.setTopArtistsOrTracks(this.state.timeRange);
+    })
+  }
+
+  closeModal() {
+    this.setState({ displayModal: false })
+  }
+
   setActiveTimeRange(timeRange) {
     this.setState({ timeRange: timeRange });
   }
 
-  setTopArtistsOrTracks(timeRange) {
+  async setTopArtistsOrTracks(timeRange) {
     const cachedArtists = sessionStorage.getItem(`artists[${timeRange}]`);
 
     if (cachedArtists) {
@@ -37,10 +53,11 @@ export default class TopArtists extends React.Component {
       return;
     }
 
-    getTopArtistsOrTracks(this.props.token, this.state.type, timeRange).then(response => {
-      this.setState({ artists: response.data.items });
-      sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
-    });
+    const response = await getTopArtistsOrTracks(this.props.token, this.state.type, timeRange);
+    const { data: { items } } = response;
+
+    this.setState({ artists: items });
+    sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
   }
 
   timeRange() {
@@ -48,44 +65,44 @@ export default class TopArtists extends React.Component {
     return queryString.split('=')[1] || 'medium_term';
   }
 
-  renderLineup(artists, tier) {
-    return (
-      <div className={`${tier} tier`}>
-        {artists.map(artist => {
-          return (
-            <Link to={`/top-artists/${artist.id}`} key={artist.id} >
-              <span>{artist.name}</span>
-            </Link>
-          )
-        })}
-      </div>
-    )
-  }
-
   render() {
-    const { artists, timeRange } = this.state;
+    const { 
+      artists, 
+      displayModal,
+      timeRange
+    } = this.state;
 
-    if (artists.length === 0) {
-      return <Loader />
-    }
+    const { displayName } = this.props;
 
     return (
-      <div className='top-artists'>
-        <div className='filters'>
-          <Filters
-            activeFilter={timeRange}
-            activeFilterCallback={this.setActiveTimeRange}
-            filterCallback={this.setTopArtistsOrTracks}
-          />
+      <div className='container'>
+        <div className='text-header'>
+          <h1>Click on a time frame, my dude.</h1>
         </div>
-        <div className='lineup-announcement'>
-          <div className='bands'>
-            {this.renderLineup(artists.slice(0, 1), 'headliner')}
-            {this.renderLineup(artists.slice(1, 5), 'mainLineup')}
-            {this.renderLineup(artists.slice(6, 12), 'midLineup')}
-            {this.renderLineup(artists.slice(13, artists.length - 1), 'bottomLineup')}
-          </div>
+        <div className='filter-options'>
+          { 
+            Object.keys(timeRangeFilters).map(key => (
+              <FilterOption 
+                key={key} 
+                value={key}
+                clickHandler={this.handleClick}
+              >
+                {timeRangeFilters[key]}
+              </FilterOption>
+            ))
+          }
         </div>
+        { 
+          displayModal ? 
+            <Lineup 
+              artists={artists} 
+              displayName={displayName}
+              timeRange={timeRange} 
+              clickHandler={this.closeModal} 
+            /> : 
+            null 
+        }
+
       </div>
     )
   }

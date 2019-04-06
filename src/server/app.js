@@ -34,12 +34,6 @@ app.get('/callback', (req, res) => {
     const maxAge = body.expires_in;
     const expiration = new Date(Number(new Date()) + (maxAge * 1000));
 
-    const options = {
-      url: 'https://api.spotify.com/v1/me',
-      headers: { 'Authorization': 'Bearer ' + accessToken },
-      json: true
-    };
-
     res.cookie('token', accessToken, { expires: expiration, httpOnly: false});
     res.cookie('refresh', refreshToken);
     res.redirect('/');

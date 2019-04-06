@@ -37,7 +37,7 @@ input[type='text'] {
   background-color: #3D74DD;
 }
 
-.home .container {
+.container {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -91,6 +91,80 @@ input[type='text'] {
   text-transform: uppercase;
 }
 
+.filter-options {
+  align-items: baseline;
+  display: flex;
+  justify-content: center;
+}
+
+.filter-options .option:first-child {
+  margin-right: 50px;
+}
+
+.filter-options .option:last-child {
+  margin-left: 50px;
+}
+
+.filter-options .option div {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.filter-options .option .btn {
+  color: white;
+  background: black;
+  border-radius: 20px;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.poster {
+  position: absolute;
+  background: white;
+  height: 689px;
+  width: 689px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.poster-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);;
+}
+
+.poster .header-text {
+  color: #3D74DD;
+  position: absolute;
+  top: 0;
+  margin-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.poster .header-text h3 {
+  font-family: Futura;
+  margin: 5px;
+}
+
+.poster .header-text h1 {
+  font-family: Futura;
+  margin: 5px;
+}
+
+.poster .footer {
+  position: absolute;
+  bottom: 20;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -139,10 +213,6 @@ nav a {
 
 .active {
   font-weight: 500;
-}
-
-.home {
-  background-color: #3D74DD;
 }
 
 .headliner {
@@ -237,12 +307,6 @@ nav a {
 .filters {
   padding: 1em 0;
   text-align: center;
-}
-
-.filter {
-  cursor: pointer;
-  margin-right: 1em;
-  text-decoration: none;
 }
 
 .export {
