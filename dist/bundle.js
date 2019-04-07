@@ -16937,7 +16937,7 @@ function getArtistAlbums(access_token, id) {
 function getTopArtistsOrTracks(access_token, type, timeRange) {
   var timeRange = timeRange || 'medium_term';
   var config = { headers: { 'Authorization': 'Bearer ' + access_token } };
-  return _axios2.default.get('https://api.spotify.com/v1/me/top/' + type + '?limit=50&time_range=' + timeRange, config);
+  return _axios2.default.get('https://api.spotify.com/v1/me/top/' + type + '?limit=24&time_range=' + timeRange, config);
 }
 
 function getUserInfo(access_token) {
@@ -22543,10 +22543,10 @@ if(false) {
 
 exports = module.exports = __webpack_require__(442)(false);
 // imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Carter+One|Quicksand:400,500,700|Righteous);", ""]);
+
 
 // module
-exports.push([module.i, "* {\n  font-family: 'Quicksand'; }\n\nbody {\n  margin: 0; }\n\na {\n  color: black; }\n\nbutton {\n  cursor: pointer; }\n\n.error {\n  color: red; }\n\ninput[type='text'] {\n  font-size: 1em;\n  line-height: 2em; }\n\n.app {\n  padding: 40px; }\n\n.logged-in {\n  background-color: #FFDF59; }\n\n.logged-out {\n  background-color: #3D74DD; }\n\n.container {\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  width: 70%; }\n\n.home .container div {\n  margin: 0 auto; }\n\n.navbar {\n  display: flex;\n  justify-content: space-between;\n  padding-bottom: 70px; }\n\n.navbar ul {\n  font-weight: bold;\n  list-style: none;\n  margin-top: 0px;\n  text-align: right;\n  text-transform: uppercase; }\n\n.navbar ul li:first-child {\n  margin-bottom: 20px; }\n\n.text-header {\n  margin-bottom: 50px; }\n\n.text-header h1 {\n  font-family: 'Futura';\n  font-size: 96px;\n  line-height: 96px;\n  margin: 0;\n  text-transform: uppercase; }\n\n.text-header p {\n  font-size: 54px; }\n\n.login-btn {\n  color: white;\n  background: black;\n  border-radius: 20px;\n  padding: 15px;\n  text-decoration: none;\n  text-transform: uppercase; }\n\n.filter-options {\n  align-items: baseline;\n  display: flex;\n  justify-content: center; }\n\n.filter-options .option:first-child {\n  margin-right: 50px; }\n\n.filter-options .option:last-child {\n  margin-left: 50px; }\n\n.filter-options .option div {\n  display: flex;\n  justify-content: center;\n  margin-bottom: 40px; }\n\n.filter-options .option .btn {\n  color: white;\n  background: black;\n  border-radius: 20px;\n  padding: 15px;\n  text-decoration: none;\n  text-transform: uppercase; }\n\n.poster {\n  position: absolute;\n  background: white;\n  height: 689px;\n  width: 689px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 100; }\n\n.poster-background {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.7); }\n\n.poster .header-text {\n  color: #3D74DD;\n  position: absolute;\n  top: 0;\n  margin-top: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  width: 100%; }\n\n.poster .header-text h3 {\n  font-family: Futura;\n  margin: 5px; }\n\n.poster .header-text h1 {\n  font-family: Futura;\n  margin: 5px; }\n\n.poster .footer {\n  position: absolute;\n  bottom: 20; }\n\nnav {\n  display: flex;\n  justify-content: space-between;\n  margin: .5em .5em 2em; }\n\nnav a {\n  margin-right: 1em;\n  text-decoration: none; }\n\n.login {\n  align-items: center;\n  background-size: cover;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  height: 100%;\n  padding: 2%; }\n\n.login-container a {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n  text-decoration: none;\n  width: 100%; }\n\n.login-container {\n  align-items: center;\n  background-color: white;\n  border: 1px solid black;\n  box-shadow: 10px 10px black;\n  color: black;\n  display: flex;\n  height: 40px;\n  justify-content: center;\n  width: 200px; }\n\n.log-out a {\n  margin-right: 0; }\n\n.active {\n  font-weight: 500; }\n\n.headliner {\n  font-size: 4em; }\n\n.mainLineup {\n  font-size: 2.2em; }\n\n.midLineup {\n  font-size: 1.5em; }\n\n.bottomLineup {\n  font-size: .9em; }\n\n.artist-info, .user-info {\n  background-image: url(\"/assets/images/pink-mountains.jpeg\");\n  background-size: cover;\n  margin-bottom: 2em;\n  padding: 2em 0;\n  text-align: center; }\n\n.artist-info a, .user-info a {\n  color: white;\n  display: block;\n  padding-top: 1em;\n  text-decoration: none; }\n\n.artist-info img {\n  max-height: 350px; }\n\n.artist-name, .username {\n  color: white;\n  font-family: 'Righteous';\n  font-size: 4em;\n  margin: 0;\n  padding: .1em 0; }\n\n.artist-album, .track {\n  border-bottom: 1px solid lightgray;\n  display: inline-block;\n  margin-right: 1em;\n  padding-top: 2em; }\n\n.album-name p, .track-details p {\n  line-height: .5em;\n  text-align: center; }\n\n.followers, .genres {\n  background-color: black;\n  color: white; }\n\n.lineup-announcement {\n  background-image: url(\"/assets/images/pink-mountains.jpeg\");\n  background-size: cover;\n  display: flex;\n  padding: 2em; }\n\n.bands {\n  border-bottom: 2px dotted white;\n  border-top: 2px dotted white;\n  padding: 2em 0;\n  text-align: center; }\n\n.bands .tier a {\n  text-decoration: none; }\n\n.bands .tier span {\n  color: white;\n  display: inline-block;\n  font-family: 'Carter One';\n  margin: 0 .5em; }\n\n.artist-albums, .recently-played, .tracks {\n  text-align: center; }\n\n.filters {\n  padding: 1em 0;\n  text-align: center; }\n\n.export {\n  background-color: black;\n  text-align: center;\n  width: 100%; }\n\n.export span button {\n  background: transparent;\n  border: none;\n  color: white;\n  cursor: pointer;\n  font-size: 1em;\n  outline: none; }\n\n.tracks-container {\n  display: -webkit-box;\n  overflow-x: hidden; }\n\n.playlist-form {\n  background-color: rgba(0, 0, 0, 0.8);\n  transition: transform 200ms ease-in-out;\n  width: 100%; }\n\n.playlist-form form {\n  background-color: white;\n  padding: 2em 1em; }\n\n.playlist-form form ul {\n  padding: 0;\n  margin-bottom: 2em; }\n\n.playlist-form input[type='text'] {\n  margin-bottom: 1em;\n  width: 100%; }\n\n.playlist-form input:last-child {\n  font-size: 1em; }\n\n.playlist-form form ul li {\n  display: flex;\n  list-style: none;\n  justify-content: space-between; }\n\n.playlist-form li:nth-child(even) {\n  background-color: lightcyan; }\n\n.playlist-form form ul li span button {\n  background: none;\n  border: none; }\n\n.playlist-form label {\n  display: block; }\n\n.playlist-form-entered, .playlist-form-exiting {\n  transform: translate(-100%); }\n\n.playlist-form-entering, .playlist-form-exited {\n  transform: translate(0%); }\n\n.modal {\n  background: white;\n  border: solid 1px black;\n  bottom: 20%;\n  box-shadow: 0 0 1em .1em black;\n  display: flex;\n  flex-direction: column;\n  height: 300px;\n  justify-content: space-between;\n  left: 20%;\n  position: fixed;\n  right: 20%;\n  text-align: center;\n  top: 20%; }\n\n.modal .message {\n  display: flex;\n  flex-direction: column;\n  height: inherit;\n  justify-content: space-around;\n  text-align: center; }\n\nbutton.btn {\n  background: lightcoral;\n  border: none;\n  color: white;\n  font-size: 1em;\n  padding: 1em;\n  width: 100%; }\n\n.loader {\n  align-items: center;\n  display: flex;\n  margin-left: .5em; }\n\n.loader span {\n  animation: fade 2s infinite ease;\n  margin-left: .5em; }\n\n.loader-out {\n  border: 2px solid black;\n  height: 1em;\n  width: 1em;\n  animation: out 2s infinite ease; }\n\n.loader-in {\n  position: relative;\n  background-color: lightcoral;\n  height: 0;\n  animation: in 2s infinite ease-in-out; }\n\n@keyframes fade {\n  0% {\n    opacity: .2; }\n  25% {\n    opacity: 1; }\n  50% {\n    opacity: .2; }\n  75% {\n    opacity: 1; }\n  100% {\n    opacity: .2; } }\n\n@keyframes in {\n  0% {\n    height: 100%; }\n  25% {\n    height: 100%; }\n  50% {\n    height: 0%; }\n  75% {\n    height: 0%; }\n  100% {\n    height: 100%; } }\n\n@keyframes out {\n  0% {\n    transform: rotate(0deg); }\n  25% {\n    transform: rotate(180deg); }\n  50% {\n    transform: rotate(180deg); }\n  75% {\n    transform: rotate(360deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@media (max-width: 480px) {\n  .artist-info img {\n    max-height: 200px; }\n  .bands {\n    margin: 0;\n    overflow: hidden;\n    padding: 10px; }\n  .headliner {\n    font-size: 2.2em;\n    margin: 0; }\n  .mainLineup {\n    font-size: 1.6em; }\n  .midLineup {\n    font-size: 1.2em; }\n  .bottomLineup {\n    font-size: .8em; }\n  .track {\n    margin-right: 0; } }\n", ""]);
+exports.push([module.i, "* {\n  font-family: 'Futura'; }\n\nbody {\n  height: 100%;\n  width: 100%; }\n\n.app {\n  padding: 40px; }\n\n.logged-in {\n  background-color: #FFDF59; }\n\n.logged-out {\n  background-color: #3D74DD; }\n\n.container {\n  display: flex;\n  flex-direction: column;\n  margin: 0 auto;\n  width: 70%; }\n\n.home .container div {\n  margin: 0 auto; }\n\n.navbar {\n  display: flex;\n  justify-content: space-between;\n  padding-bottom: 70px; }\n\n.navbar ul {\n  font-weight: bold;\n  list-style: none;\n  margin-top: 0px;\n  text-align: right;\n  text-transform: uppercase; }\n\n.navbar ul li:first-child {\n  margin-bottom: 20px; }\n\n.text-header {\n  margin-bottom: 50px; }\n\n.text-header h1 {\n  font-family: 'Futura';\n  font-size: 96px;\n  line-height: 96px;\n  margin: 0;\n  text-transform: uppercase; }\n\n.text-header p {\n  font-size: 54px; }\n\n.login-btn {\n  color: white;\n  background: black;\n  border-radius: 20px;\n  padding: 15px;\n  text-decoration: none;\n  text-transform: uppercase; }\n\n.filter-options {\n  align-items: baseline;\n  display: flex;\n  justify-content: center; }\n\n.filter-options .option:first-child {\n  margin-right: 50px; }\n\n.filter-options .option:last-child {\n  margin-left: 50px; }\n\n.filter-options .option div {\n  display: flex;\n  justify-content: center;\n  margin-bottom: 40px; }\n\n.filter-options .option .btn {\n  color: white;\n  background: black;\n  border-radius: 20px;\n  padding: 15px;\n  text-decoration: none;\n  text-transform: uppercase; }\n\n.poster {\n  position: absolute;\n  background: white;\n  height: 689px;\n  width: 689px;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  z-index: 100; }\n\n.poster-background {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background: rgba(0, 0, 0, 0.7); }\n\n.poster .header-text {\n  color: #3D74DD;\n  position: absolute;\n  top: 0;\n  margin-top: 30px;\n  text-align: center;\n  text-transform: uppercase;\n  width: 100%; }\n\n.poster .header-text h3 {\n  font-family: Futura;\n  margin: 5px; }\n\n.poster .header-text h1 {\n  font-family: Futura;\n  margin: 5px; }\n\n.poster .footer {\n  position: absolute;\n  bottom: 20;\n  z-index: -1; }\n\n.acts {\n  font-family: 'Futura';\n  text-transform: uppercase; }\n\n.acts .headliner {\n  font-size: 40px;\n  text-align: center;\n  position: relative;\n  top: -100; }\n\n.acts .co_headliner {\n  font-size: 30px;\n  display: flex;\n  justify-content: space-around;\n  position: relative;\n  top: -95; }\n\n.acts .top_bill {\n  font-size: 20px;\n  display: flex;\n  justify-content: space-around;\n  position: relative;\n  top: -85; }\n\n.acts .supporting {\n  position: relative;\n  top: -75;\n  font-size: 12px;\n  padding: 0 10px;\n  text-align: center;\n  overflow: hidden; }\n\n.acts .supporting span {\n  display: inline-block;\n  margin: 2px;\n  width: 15%;\n  vertical-align: middle; }\n", ""]);
 
 // exports
 
@@ -37910,7 +37910,7 @@ var _Lineup2 = _interopRequireDefault(_Lineup);
 
 var _spotify = __webpack_require__(236);
 
-var _filters = __webpack_require__(613);
+var _filters = __webpack_require__(611);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38293,51 +38293,45 @@ var _react = __webpack_require__(12);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _forest_header = __webpack_require__(607);
-
-var _forest_header2 = _interopRequireDefault(_forest_header);
-
-var _forest_footer = __webpack_require__(608);
+var _forest_footer = __webpack_require__(607);
 
 var _forest_footer2 = _interopRequireDefault(_forest_footer);
 
-var _volcano_header = __webpack_require__(609);
-
-var _volcano_header2 = _interopRequireDefault(_volcano_header);
-
-var _volcano_footer = __webpack_require__(610);
+var _volcano_footer = __webpack_require__(608);
 
 var _volcano_footer2 = _interopRequireDefault(_volcano_footer);
 
-var _unholy_header = __webpack_require__(611);
+var _poster_header = __webpack_require__(609);
 
-var _unholy_header2 = _interopRequireDefault(_unholy_header);
+var _poster_header2 = _interopRequireDefault(_poster_header);
 
-var _unholy_footer = __webpack_require__(612);
+var _unholy_footer = __webpack_require__(610);
 
 var _unholy_footer2 = _interopRequireDefault(_unholy_footer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
+
 var getDetails = function getDetails(timeRange) {
   switch (timeRange) {
     case 'short_term':
       return {
-        header: _volcano_header2.default,
+        header: _poster_header2.default,
         footer: _volcano_footer2.default,
         name: 'Volcanojam'
       };
       break;
     case 'medium_term':
       return {
-        header: _forest_header2.default,
+        header: _poster_header2.default,
         footer: _forest_footer2.default,
         name: 'Forestfest'
       };
       break;
     case 'long_term':
       return {
-        header: _unholy_header2.default,
+        header: _poster_header2.default,
         footer: _unholy_footer2.default,
         name: 'Unholy Space'
       };
@@ -38347,19 +38341,90 @@ var getDetails = function getDetails(timeRange) {
   }
 };
 
+var groupLineup = function groupLineup(artists) {
+  var _artists = _toArray(artists),
+      first = _artists[0],
+      second = _artists[1],
+      third = _artists[2],
+      fourth = _artists[3],
+      fifth = _artists[4],
+      sixth = _artists[5],
+      rest = _artists.slice(6);
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'acts' },
+    _react2.default.createElement(
+      'div',
+      { className: 'headliner' },
+      first.name
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'co_headliner' },
+      _react2.default.createElement(
+        'span',
+        null,
+        second.name
+      ),
+      _react2.default.createElement(
+        'span',
+        null,
+        third.name
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'top_bill' },
+      _react2.default.createElement(
+        'span',
+        null,
+        fourth.name
+      ),
+      _react2.default.createElement(
+        'span',
+        null,
+        fifth.name
+      ),
+      _react2.default.createElement(
+        'span',
+        null,
+        sixth.name
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'supporting' },
+      rest.map(function (artist) {
+        return _react2.default.createElement(
+          'span',
+          { key: artist.id },
+          artist.name
+        );
+      })
+    )
+  );
+};
+
 var Lineup = function Lineup(props) {
   var artists = props.artists,
       clickHandler = props.clickHandler,
       displayName = props.displayName,
       timeRange = props.timeRange;
 
-
-  console.log('Lineup: ', timeRange);
-
   var _getDetails = getDetails(timeRange),
       header = _getDetails.header,
       footer = _getDetails.footer,
       name = _getDetails.name;
+
+  var _artists2 = _toArray(artists),
+      first = _artists2[0],
+      second = _artists2[1],
+      third = _artists2[2],
+      fourth = _artists2[3],
+      fifth = _artists2[4],
+      sixth = _artists2[5],
+      rest = _artists2.slice(6);
 
   return _react2.default.createElement(
     'div',
@@ -38389,17 +38454,7 @@ var Lineup = function Lineup(props) {
           )
         )
       ),
-      _react2.default.createElement(
-        'div',
-        { className: 'acts' },
-        artists.map(function (artist) {
-          return _react2.default.createElement(
-            'span',
-            { key: artist.id },
-            artist.name
-          );
-        })
-      ),
+      groupLineup(artists),
       _react2.default.createElement(
         'div',
         { className: 'footer' },
@@ -38415,40 +38470,28 @@ exports.default = Lineup;
 /* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "148299f8d096dbb7eca2c3b3fd364cc8.png";
+module.exports = __webpack_require__.p + "4fe62da2b4bb6bd2230adc912fb97d79.png";
 
 /***/ }),
 /* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "4fe62da2b4bb6bd2230adc912fb97d79.png";
+module.exports = __webpack_require__.p + "e1ce91c08871270393100e21788559f6.png";
 
 /***/ }),
 /* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "48c65e788ad11cb1d803b6921b643df5.png";
+module.exports = __webpack_require__.p + "d3361d4eb2813c7b565b4f549b13b2ab.png";
 
 /***/ }),
 /* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "e1ce91c08871270393100e21788559f6.png";
-
-/***/ }),
-/* 611 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "d3361d4eb2813c7b565b4f549b13b2ab.png";
-
-/***/ }),
-/* 612 */
-/***/ (function(module, exports, __webpack_require__) {
-
 module.exports = __webpack_require__.p + "bcd06df619016793a311bf9f24e1d21c.png";
 
 /***/ }),
-/* 613 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

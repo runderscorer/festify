@@ -23,7 +23,7 @@ export function getArtistAlbums(access_token, id) {
 export function getTopArtistsOrTracks(access_token, type, timeRange) {
   var timeRange = timeRange || 'medium_term';
   const config = { headers: { 'Authorization': 'Bearer ' + access_token } };
-  return axios.get(`https://api.spotify.com/v1/me/top/${type}?limit=50&time_range=${timeRange}`, config);
+  return axios.get(`https://api.spotify.com/v1/me/top/${type}?limit=24&time_range=${timeRange}`, config);
 }
 
 export function getUserInfo(access_token) {

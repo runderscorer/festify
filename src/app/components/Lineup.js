@@ -1,30 +1,28 @@
 import React from 'react';
-import forestHeader from '../assets/images/forest_header.png';
 import forestFooter from '../assets/images/forest_footer.png';
-import volcanoHeader from '../assets/images/volcano_header.png';
 import volcanoFooter from '../assets/images/volcano_footer.png';
-import unholyHeader from '../assets/images/unholy_header.png';
+import posterHeader from '../assets/images/poster_header.png';
 import unholyFooter from '../assets/images/unholy_footer.png';
 
 const getDetails = (timeRange) => {
   switch (timeRange) {
     case 'short_term':
       return {
-        header: volcanoHeader,
+        header: posterHeader,
         footer: volcanoFooter,
         name: 'Volcanojam'
       }
       break;
     case 'medium_term':
       return {
-        header: forestHeader,
+        header: posterHeader,
         footer: forestFooter,
         name: 'Forestfest'
       }
       break;
     case 'long_term':
       return {
-        header: unholyHeader,
+        header: posterHeader,
         footer: unholyFooter,
         name: 'Unholy Space'
       }
@@ -32,6 +30,36 @@ const getDetails = (timeRange) => {
     default:
       null
   }
+}
+
+const groupLineup = (artists) => {
+  const [
+    first,
+    second,
+    third,
+    fourth,
+    fifth,
+    sixth,
+    ...rest
+  ] = artists;
+
+  return (
+    <div className='acts'>
+      <div className='headliner'>{first.name}</div>
+      <div className='co_headliner'>
+        <span>{second.name}</span>
+        <span>{third.name}</span>
+      </div>
+      <div className='top_bill'>
+        <span>{fourth.name}</span>
+        <span>{fifth.name}</span>
+        <span>{sixth.name}</span>
+      </div>
+      <div className='supporting'>
+        { rest.map(artist => <span key={artist.id}>{artist.name}</span>) }
+      </div>
+    </div>
+  )
 }
 
 const Lineup = (props) => {
@@ -48,6 +76,16 @@ const Lineup = (props) => {
     name
   } = getDetails(timeRange);
 
+  const [
+    first,
+    second,
+    third,
+    fourth,
+    fifth,
+    sixth,
+    ...rest
+  ] = artists;
+
   return (
     <div className='poster-background' onClick={clickHandler}>
       <div className='poster'>
@@ -59,9 +97,7 @@ const Lineup = (props) => {
           </div>
         </div>
 
-        <div className='acts'>
-          { artists.map(artist => <span key={artist.id}>{artist.name}</span>) }
-        </div>
+        { groupLineup(artists) }
 
         <div className='footer'>
           <img src={footer} />

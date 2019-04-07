@@ -1,28 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Carter+One|Quicksand:400,500,700|Righteous');
-
 * {
-  font-family: 'Quicksand';
+  font-family: 'Futura';
 }
 
 body {
-  margin: 0;
-}
-
-a {
-  color: black;
-}
-
-button {
-  cursor: pointer;
-}
-
-.error {
-  color: red;
-}
-
-input[type='text'] {
-  font-size: 1em;
-  line-height: 2em;
+  height: 100%;
+  width: 100%;
 }
 
 .app {
@@ -163,369 +145,49 @@ input[type='text'] {
 .poster .footer {
   position: absolute;
   bottom: 20;
+  z-index: -1;
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  margin: .5em .5em 2em;
+.acts {
+  font-family: 'Futura';
+  text-transform: uppercase;
 }
 
-nav a {
-  margin-right: 1em;
-  text-decoration: none;
-}
-
-.login {
-  align-items: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  padding: 2%;
-}
-
-.login-container a {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  text-decoration: none;
-  width: 100%;
-}
-
-.login-container {
-  align-items: center;
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 10px 10px black;
-  color: black;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  width: 200px;
-}
-
-.log-out a {
-  margin-right: 0;
-}
-
-.active {
-  font-weight: 500;
-}
-
-.headliner {
-  font-size: 4em;
-}
-
-.mainLineup {
-  font-size: 2.2em;
-}
-
-.midLineup {
-  font-size: 1.5em;
-}
-
-.bottomLineup {
-  font-size: .9em;
-}
-
-.artist-info, .user-info {
-  background-image: url('/assets/images/pink-mountains.jpeg');
-  background-size: cover;
-  margin-bottom: 2em;
-  padding: 2em 0;
+.acts .headliner {
+  font-size: 40px;
   text-align: center;
-}
-
-.artist-info a, .user-info a {
-  color: white;
-  display: block;
-  padding-top: 1em;
-  text-decoration: none;
-}
-
-.artist-info img {
-  max-height: 350px;
-}
-
-.artist-name, .username {
-  color: white;
-  font-family: 'Righteous';
-  font-size: 4em;
-  margin: 0;
-  padding: .1em 0;
-}
-
-.artist-album, .track {
-  border-bottom: 1px solid lightgray;
-  display: inline-block;
-  margin-right: 1em;
-  padding-top: 2em;
-}
-
-.album-name p, .track-details p {
-  line-height: .5em;
-  text-align: center;
-}
-
-.followers, .genres {
-  background-color: black;
-  color: white;
-}
-
-.lineup-announcement {
-  background-image: url('/assets/images/pink-mountains.jpeg');
-  background-size: cover;
-  display: flex;
-  padding: 2em;
-}
-
-.bands {
-  border-bottom: 2px dotted white;
-  border-top: 2px dotted white;
-  padding: 2em 0;
-  text-align: center;
-}
-
-.bands .tier a {
-  text-decoration: none;
-}
-
-.bands .tier span {
-  color: white;
-  display: inline-block;
-  font-family: 'Carter One';
-  margin: 0 .5em;
-}
-
-.artist-albums, .recently-played, .tracks {
-  text-align: center;
-}
-
-.filters {
-  padding: 1em 0;
-  text-align: center;
-}
-
-.export {
-  background-color: black;
-  text-align: center;
-  width: 100%;
-}
-
-.export span button {
-  background: transparent;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1em;
-  outline: none;
-}
-
-.tracks-container {
-  display: -webkit-box;
-  overflow-x: hidden;
-}
-
-.playlist-form {
-  background-color: rgba(black, .8);
-  transition: transform 200ms ease-in-out;
-  width: 100%;
-}
-
-.playlist-form form {
-  background-color: white;
-  padding: 2em 1em;
-}
-
-.playlist-form form ul {
-  padding: 0;
-  margin-bottom: 2em;
-}
-
-.playlist-form input[type='text'] {
-  margin-bottom: 1em;
-  width: 100%;
-}
-
-.playlist-form input:last-child {
-  font-size: 1em;
-}
-
-.playlist-form form ul li {
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-}
-
-.playlist-form li:nth-child(even) {
-  background-color: lightcyan;
-}
-
-.playlist-form form ul li span button {
-  background: none;
-  border: none;
-}
-
-.playlist-form label {
-  display: block;
-}
-
-.playlist-form-entered, .playlist-form-exiting {
-  transform: translate(-100%);
-}
-
-.playlist-form-entering, .playlist-form-exited {
-  transform: translate(0%);
-}
-
-.modal {
-  background: white;
-  border: solid 1px black;
-  bottom: 20%;
-  box-shadow: 0 0 1em .1em black;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  justify-content: space-between;
-  left: 20%;
-  position: fixed;
-  right: 20%;
-  text-align: center;
-  top: 20%;
-}
-
-.modal .message {
-  display: flex;
-  flex-direction: column;
-  height: inherit;
-  justify-content: space-around;
-  text-align: center;
-}
-
-button.btn {
-  background: lightcoral;
-  border: none;
-  color: white;
-  font-size: 1em;
-  padding: 1em;
-  width: 100%;
-}
-
-.loader {
-  align-items: center;
-  display: flex;
-  margin-left: .5em;
-}
-
-.loader span {
-  animation: fade 2s infinite ease;
-  margin-left: .5em;
-}
-
-.loader-out {
-  border: 2px solid black;
-  height: 1em;
-  width: 1em;
-  animation: out 2s infinite ease;
-}
-
-.loader-in {
   position: relative;
-  background-color: lightcoral;
-  height: 0;
-  animation: in 2s infinite ease-in-out;
+  top: -100;
 }
 
-@keyframes fade {
-  0% {
-    opacity: .2;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    opacity: .2;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: .2;
-  }
+.acts .co_headliner {
+  font-size: 30px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: -95;
 }
 
-@keyframes in {
-  0% {
-    height: 100%;
-  }
-  25% {
-    height: 100%;
-  }
-  50% {
-    height: 0%;
-  }
-  75% {
-    height: 0%;
-  }
-  100% {
-    height: 100%;
-  }
+.acts .top_bill {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  top: -85;
 }
 
-@keyframes out {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(180deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.acts .supporting {
+  position: relative;
+  top: -75;
+  font-size: 12px;
+  padding: 0 10px;
+  text-align: center;
+  overflow: hidden;
 }
 
-@media (max-width: 480px) {
-
-  // Artist
-  .artist-info img {
-    max-height: 200px;
-  }
-
-  // Top Artists
-  .bands {
-    margin: 0;
-    overflow: hidden;
-    padding: 10px;
-  }
-
-  .headliner {
-    font-size: 2.2em;
-    margin: 0;
-  }
-
-  .mainLineup {
-    font-size: 1.6em;
-  }
-
-  .midLineup {
-    font-size: 1.2em;
-  }
-
-  .bottomLineup {
-    font-size: .8em;
-  }
-
-  // Track
-  .track {
-    margin-right: 0;
-  }
+.acts .supporting span {
+  display: inline-block;
+  margin: 2px;
+  width: 15%;
+  vertical-align: middle;
 }
