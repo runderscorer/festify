@@ -6,9 +6,9 @@ import vaseImg from '../assets/images/about_1.png';
 const About = () => {
   return (
     <div>
-      <h1 className='about_header'>About</h1>
+      <h1 className='about-header'>About</h1>
       <div className='about'>
-        <div className='about_text'>
+        <div className='about-text'>
           <div>
             <p>Festify takes your most listened to Spotify artists and creates a visual line-up so you can share with your friends. Rick started this project in 2017, to play with the Spotify API. Tony then redesigned the app and cranked the whimsy to 11.</p>
           </div>

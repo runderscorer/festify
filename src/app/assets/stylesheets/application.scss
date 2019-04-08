@@ -1,19 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
+
 * {
   font-family: 'Futura';
 }
 
-body {
+html {
   height: 100%;
-  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+#root {
+  min-height: 100%;
   margin: 0;
 }
 
 .app {
-  height: 100%;
   padding: 40px;
+  min-height: 100%;
 }
 
-.about_header {
+.about-header {
   margin: 0;
   text-transform: uppercase;
 }
@@ -26,17 +38,29 @@ body {
   font-size: 20px;
 }
 
-.about_text {
+.about-text {
   margin-right: 80px;
+}
+
+.about-text p {
+  font-family: 'Roboto Slab';
 }
 
 .about .section {
   display: flex;
 }
 
+.about .section div:first-child {
+  margin-right: 50px;
+}
+
 .about .bio {
   display: flex;
   margin-bottom: 30px;
+}
+
+.about .bio .image {
+  margin-right: 20px;
 }
 
 .about .bio > div:last-child {
@@ -98,16 +122,20 @@ body {
 
 .navbar .links a {
   color: black;
+  font-size: 14px;
   display: block;
+  margin-bottom: 2px;
   text-decoration: none;
-}
-
-.navbar .links a:first-child {
-  margin-bottom: 20px;
 }
 
 .text-header {
   margin-bottom: 50px;
+}
+
+.text-header p {
+  font-family: 'Roboto Slab';
+  font-size: 40px;
+  text-transform: uppercase;
 }
 
 .text-header h1 {
@@ -125,10 +153,16 @@ body {
 .login-btn {
   color: white;
   background: black;
-  border-radius: 20px;
-  padding: 15px;
+  border-radius: 30px;
+  padding: 18px 25px 18px 18px;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.login-btn img {
+  height: 40px;
+  padding-bottom: 6px;
+  vertical-align: middle;
 }
 
 .filter-options {
@@ -154,60 +188,97 @@ body {
 .filter-options .option .btn {
   color: white;
   background: black;
+  border-radius: 30px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 150px;
+}
+
+.download-btn {
+  color: white;
+  background: black;
+  border: 1px solid white;
   border-radius: 20px;
   padding: 15px;
   text-decoration: none;
   text-transform: uppercase;
 }
 
-.poster {
-  position: absolute;
+#poster {
   background: white;
-  height: 689px;
-  width: 689px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 688px;
+  width: 688px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   z-index: 100;
 }
 
-.poster-background {
+.lineup {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);;
+  background: rgba(0, 0, 0, 0.85);;
+  height: 100vh;
+  padding: 40px;
 }
 
-.poster .header-text {
-  color: #3D74DD;
+.poster-container {
   position: absolute;
-  top: 0;
-  margin-top: 30px;
+  left: 0;
+  right: 0;
+}
+
+.poster-container .close {
+  display: flex;
+  color: white;
+  justify-content: flex-end;
+  margin: auto;
+  width: 689px;
+}
+
+.poster-container .close h1 {
+  margin: 0;
+}
+
+.poster-container .download {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#poster .header {
+  position: relative;
+}
+
+#poster .header-text {
+  position: absolute;
+  color: #3D74DD;
   text-align: center;
   text-transform: uppercase;
+  top: 40;
   width: 100%;
 }
 
-.poster .header-text h3 {
+#poster .header-text h3 {
   font-family: Futura;
   margin: 5px;
 }
 
-.poster .header-text h1 {
+#poster .header-text h1 {
   font-family: Futura;
   margin: 5px;
-}
-
-.poster .footer {
-  position: absolute;
-  bottom: 20;
-  z-index: -1;
 }
 
 .acts {
   font-family: 'Futura';
+  height: 150px;
   text-transform: uppercase;
 }
 

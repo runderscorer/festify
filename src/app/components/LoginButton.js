@@ -1,4 +1,5 @@
 import React from 'react';
+import spotifyLogo from '../assets/images/spotify.png';
 
 const LoginButton = (props) => {
   const authLink = 'http://accounts.spotify.com/authorize';
@@ -11,6 +12,7 @@ const LoginButton = (props) => {
 
   return (
     <a className='login-btn' href={loginLink}>
+      <img src={spotifyLogo} />
       Login with Spotify
     </a>
   )

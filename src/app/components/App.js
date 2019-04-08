@@ -61,8 +61,8 @@ export default class App extends React.Component {
 
     return (
       <div className={`app ${token ? 'logged-in' : 'logged-out'}`}>
-        <NavBar />
-        { token ? <Main token={token} displayName={displayName} /> : <Home /> }
+        <NavBar loggedIn={token ? true : false} />
+        <Main token={token} displayName={displayName} />
       </div>
     )
   }
