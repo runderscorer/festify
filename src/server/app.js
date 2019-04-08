@@ -73,7 +73,7 @@ app.get('/log-out', (req, res) => {
   res.redirect('/');
 })
 
-app.get(['/', '/top-artists', '/top-tracks', '/top-artists/*'], (req, res) => {
+app.get(['/', '/about'], (req, res) => {
   res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
 });
 

@@ -5,10 +5,63 @@
 body {
   height: 100%;
   width: 100%;
+  margin: 0;
 }
 
 .app {
+  height: 100%;
   padding: 40px;
+}
+
+.about_header {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about {
+  display: flex;
+}
+
+.about p {
+  font-size: 20px;
+}
+
+.about_text {
+  margin-right: 80px;
+}
+
+.about .section {
+  display: flex;
+}
+
+.about .bio {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.about .bio > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+}
+
+.about > div:last-child {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.contact h3, .contact p {
+  margin: 0;
+}
+
+.contact > p {
+  font-size: 16px;
+}
+
+.team > h3 {
+  padding-left: 38px;
 }
 
 .logged-in {
@@ -36,15 +89,20 @@ body {
   padding-bottom: 70px;
 }
 
-.navbar ul {
+.navbar .links {
   font-weight: bold;
-  list-style: none;
   margin-top: 0px;
   text-align: right;
   text-transform: uppercase;
 }
 
-.navbar ul li:first-child {
+.navbar .links a {
+  color: black;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar .links a:first-child {
   margin-bottom: 20px;
 }
 
