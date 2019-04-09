@@ -76,7 +76,21 @@ body {
   justify-content: space-between;
 }
 
-.contact h3, .contact p {
+.blurb {
+  width: 400px;
+}
+
+.blurb p {
+  font-family: 'Roboto Slab';
+}
+
+.contact h3  {
+  font-size: 22px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.contact p {
   margin: 0;
 }
 
@@ -85,14 +99,16 @@ body {
 }
 
 .team > h3 {
+  font-weight: normal;
+  font-size: 30px;
   padding-left: 38px;
 }
 
-.logged-in {
+.yellow {
   background-color: #FFDF59;
 }
 
-.logged-out {
+.blue {
   background-color: #3D74DD;
 }
 
@@ -123,6 +139,7 @@ body {
 .navbar .links a {
   color: black;
   font-size: 14px;
+  font-weight: normal;
   display: block;
   margin-bottom: 2px;
   text-decoration: none;
@@ -140,14 +157,14 @@ body {
 
 .text-header h1 {
   font-family: 'Futura';
-  font-size: 96px;
-  line-height: 96px;
+  font-size: 70px;
+  line-height: 70px;
   margin: 0;
   text-transform: uppercase;
 }
 
 .text-header p {
-  font-size: 54px;
+  font-size: 40px;
 }
 
 .login-btn {
@@ -220,13 +237,13 @@ body {
 }
 
 .lineup {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.85);;
-  height: 100vh;
+  min-height: 803px;
   padding: 40px;
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Home from './Home';
 import NavBar from './NavBar';
 import Main from './Main';
 import { getUserInfo, refreshToken } from '../helpers/spotify';
@@ -11,12 +10,14 @@ export default class App extends React.Component {
 
     this.state = {
       token: '',
-      displayName: ''
+      displayName: '',
+      backgroundColor: 'blue',
     }
 
     this.clearSession = this.clearSession.bind(this);
     this.setToken = this.setToken.bind(this);
     this.setDisplayName = this.setDisplayName.bind(this);
+    this.setBackgroundColor = this.setBackgroundColor.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +50,10 @@ export default class App extends React.Component {
     this.setState({ token: token });
   }
 
+  setBackgroundColor(value) {
+    this.setState({ backgroundColor: value })
+  }
+
   async setDisplayName(token) {
     const response = await getUserInfo(token)
     const { data: { display_name } } = response
@@ -57,12 +62,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { displayName, token } = this.state;
+    const { backgroundColor, displayName, token } = this.state;
 
     return (
-      <div className={`app ${token ? 'logged-in' : 'logged-out'}`}>
+      <div className={`app ${backgroundColor}`}>
         <NavBar loggedIn={token ? true : false} />
-        <Main token={token} displayName={displayName} />
+        <Main token={token} displayName={displayName} setBackgroundColor={this.setBackgroundColor} />
       </div>
     )
   }

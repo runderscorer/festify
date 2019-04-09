@@ -108,7 +108,7 @@ export default class Lineup extends Component {
                 <div className='header'>
                   <img src={header} />
                   <div className='header-text'>
-                    <h3>{ displayName }'s</h3>
+                    { displayName ? <h3>{displayName}'s</h3> : null }
                     <h1>{ name } { new Date().getFullYear() }</h1>
                   </div>
                 </div>

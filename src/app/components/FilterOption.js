@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import potInactive from '../assets/images/lastmonth_1.png';
-import potActive from '../assets/images/lastmonth_2.png';
 import vaseInactive from '../assets/images/6month_1.png';
-import vaseActive from '../assets/images/6month_2.png';
 import cactusInactive from '../assets/images/alltime_1.png';
-import cactusActive from '../assets/images/alltime_2.png';
 import { Link } from 'react-router-dom';
 
 const renderIcon = (value) => {

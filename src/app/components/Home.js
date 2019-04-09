@@ -3,6 +3,10 @@ import LoginButton from './LoginButton';
 import homepageIcons from '../assets/images/homepage_icons.png';
 
 export default class Home extends Component {
+  componentWillMount() {
+    this.props.setBackgroundColor('blue');
+  }
+
   render() {
     return (
       <div className='home'>

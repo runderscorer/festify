@@ -24,6 +24,10 @@ export default class TopArtists extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentWillMount() {
+    this.props.setBackgroundColor('yellow');
+  }
+
   handleClick(value) {
     this.setState({
       displayModal: true,
@@ -68,10 +72,14 @@ export default class TopArtists extends React.Component {
       timeRange
     } = this.state;
 
-    const { displayName, token } = this.props;
+    const { 
+      displayName, 
+      token,
+      setBackgroundColor 
+    } = this.props;
 
     if (!token) {
-      return <Home />
+      return <Home setBackgroundColor={setBackgroundColor} />
     } else {
       return (
         <div className='container'>
