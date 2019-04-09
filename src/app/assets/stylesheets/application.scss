@@ -100,7 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
 }
 
 .home .container div {
@@ -198,6 +198,7 @@ body {
 
 .download-btn {
   color: white;
+  cursor: pointer;
   background: black;
   border: 1px solid white;
   border-radius: 20px;
@@ -238,6 +239,7 @@ body {
 .poster-container .close {
   display: flex;
   color: white;
+  cursor: pointer;
   justify-content: flex-end;
   margin: auto;
   width: 689px;
@@ -274,6 +276,18 @@ body {
 #poster .header-text h1 {
   font-family: Futura;
   margin: 5px;
+}
+
+#poster-layout {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 688px;
+}
+
+#poster-layout .footer {
+  padding-bottom: 20px;
 }
 
 .acts {

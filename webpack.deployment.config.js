@@ -6,8 +6,7 @@ module.exports = {
   entry: ['babel-polyfill', './src/app/index.js'],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/dist/'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -32,13 +31,7 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true,
-              disable: true
-            }
-          }
+          { loader: 'image-webpack-loader' }
         ]
       }
     ]

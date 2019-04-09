@@ -45,23 +45,25 @@ const groupLineup = (artists) => {
     ...rest
   ] = artists;
 
-  return (
-    <div className='acts'>
-      <div className='headliner'>{first.name}</div>
-      <div className='co_headliner'>
-        <span>{second.name}</span>
-        <span>{third.name}</span>
+  if (artists.length) {
+    return (
+      <div className='acts'>
+        <div className='headliner'>{first.name}</div>
+        <div className='co_headliner'>
+          <span>{second.name}</span>
+          <span>{third.name}</span>
+        </div>
+        <div className='top_bill'>
+          <span>{fourth.name}</span>
+          <span>{fifth.name}</span>
+          <span>{sixth.name}</span>
+        </div>
+        <div className='supporting'>
+          { rest.map(artist => <span key={artist.id}>{artist.name}</span>) }
+        </div>
       </div>
-      <div className='top_bill'>
-        <span>{fourth.name}</span>
-        <span>{fifth.name}</span>
-        <span>{sixth.name}</span>
-      </div>
-      <div className='supporting'>
-        { rest.map(artist => <span key={artist.id}>{artist.name}</span>) }
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default class Lineup extends Component {
@@ -73,7 +75,7 @@ export default class Lineup extends Component {
 
   async handleClick() {
     const { name } = getDetails(this.props.timeRange);
-    const node = document.getElementById('poster');
+    const node = document.getElementById('poster-layout');
 
     const blob = await domtoimage.toBlob(node);
     saveAs(blob, `${name}.png`)
@@ -93,16 +95,6 @@ export default class Lineup extends Component {
       name
     } = getDetails(timeRange);
 
-    const [
-      first,
-      second,
-      third,
-      fourth,
-      fifth,
-      sixth,
-      ...rest
-    ] = artists;
-
     return (
       <div className='lineup'>
         <div className='poster-container'>
@@ -112,18 +104,20 @@ export default class Lineup extends Component {
             </div>
 
             <div id='poster'>
-              <div className='header'>
-                <img src={header} />
-                <div className='header-text'>
-                  <h3>{ displayName }'s</h3>
-                  <h1>{ name } { new Date().getFullYear() }</h1>
+              <div id='poster-layout'>
+                <div className='header'>
+                  <img src={header} />
+                  <div className='header-text'>
+                    <h3>{ displayName }'s</h3>
+                    <h1>{ name } { new Date().getFullYear() }</h1>
+                  </div>
                 </div>
-              </div>
 
-              { groupLineup(artists) }
+                { groupLineup(artists) }
 
-              <div className='footer'>
-                <img src={footer} />
+                <div className='footer'>
+                  <img src={footer} />
+                </div>
               </div>
             </div>
 

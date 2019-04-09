@@ -24,10 +24,6 @@ export default class TopArtists extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  componentDidMount() {
-    this.setTopArtistsOrTracks(this.state.timeRange);
-  }
-
   handleClick(value) {
     this.setState({
       displayModal: true,
