@@ -56,7 +56,7 @@ export default class TopArtists extends React.Component {
     const response = await getTopArtistsOrTracks(this.props.token, this.state.type, timeRange);
     const { data: { items } } = response;
 
-    this.setState({ artists: items });
+    this.setState({ artists: items.map(item => item.name) });
     sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
   }
 

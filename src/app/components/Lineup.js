@@ -48,18 +48,18 @@ const groupLineup = (artists) => {
   if (artists.length) {
     return (
       <div className='acts'>
-        <div className='headliner'>{first.name}</div>
+        <div className='headliner'>{first}</div>
         <div className='co_headliner'>
-          <span>{second.name}</span>
-          <span>{third.name}</span>
+          <span>{second}</span>
+          <span>{third}</span>
         </div>
         <div className='top_bill'>
-          <span>{fourth.name}</span>
-          <span>{fifth.name}</span>
-          <span>{sixth.name}</span>
+          <span>{fourth}</span>
+          <span>{fifth}</span>
+          <span>{sixth}</span>
         </div>
         <div className='supporting'>
-          { rest.map(artist => <span key={artist.id}>{artist.name}</span>) }
+          { rest.map(artist => <span key={artist}>{artist}</span>) }
         </div>
       </div>
     )
