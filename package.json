@@ -23,7 +23,7 @@
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.0",
     "request": "^2.88.0",
-    "webpack": "^3.5.6"
+    "webpack": "^4.32.2"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
@@ -31,16 +31,18 @@
     "file-loader": "^3.0.1",
     "image-webpack-loader": "^4.6.0",
     "node-sass": "^4.11.0",
+    "nodemon": "^1.19.1",
     "prop-types": "^15.6.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": ">=3.1.11",
+    "webpack-dev-server": "^3.4.1",
     "webpack-hot-middleware": "^2.19.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack && node src/server",
+    "start-dev:client": "webpack-dev-server --port 3000",
+    "start-dev:server": "nodemon src/server",
     "start:prod": "node src/server",
     "build:prod": "webpack --config webpack.deployment.config.js"
   },
