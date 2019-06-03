@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 app.use(express.static(path.resolve(__dirname, '../../dist')));
 
-app.get('/callback', (req, res) => {
+app.get('/api/callback', (req, res) => {
   const code = req.query.code || null;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -40,7 +40,7 @@ app.get('/callback', (req, res) => {
   });
 })
 
-app.get('/refresh', (req, res) => {
+app.get('/api/refresh', (req, res) => {
   const clientId = process.env.REACT_APP_CLIENT_ID;
   const clientSecret = process.env.REACT_APP_CLIENT_SECRET;
   const refreshToken = req.query.refresh;
@@ -67,7 +67,7 @@ app.get('/refresh', (req, res) => {
   });
 })
 
-app.get('/log-out', (req, res) => {
+app.get('/api/log-out', (req, res) => {
   res.clearCookie('token');
   res.clearCookie('refresh');
   res.redirect('/');

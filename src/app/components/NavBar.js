@@ -8,7 +8,7 @@ const NavBar = ({ loggedIn }) => (
     <div className='links'>
       <Link to='/'>Home</Link>
       <Link to='/about'>About</Link>
-      { loggedIn ? <a href='/log-out'>Log Out</a> : null }
+      { loggedIn ? <a href='/api/log-out'>Log Out</a> : null }
     </div>
   </div>
 )

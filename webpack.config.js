@@ -14,17 +14,8 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/assets/',
     proxy: {
-      '^/callback': {
-        target: 'http://localhost:9000/callback',
-        secure: false
-      },
-      '^/refresh': {
-        target: 'http://localhost:9000/refresh',
-        secure: false
-      },
-      '^/log-out': {
-        target: 'http://localhost:9000/log-out',
-        secure: false
+      '/api': {
+        target: 'http://localhost:9000'
       }
     },
     compress: true,
