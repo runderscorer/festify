@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300');
+@import 'mixins';
 
 * {
   font-family: 'Futura';
@@ -113,27 +114,49 @@ body {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 80%;
+  text-align: center;
+
+  @include respond-to('medium') {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 80%;
+  }
 }
 
-.home .container div {
-  margin: 0 auto;
+.home .bottom-banner {
+  display: none;
+
+  @include respond-to('medium') {
+    display: block;
+  }
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 70px;
+  flex-direction: column;
+  padding-bottom: 50px;
+  border-bottom: 3px solid black;
+
+  @include respond-to('medium') {
+    flex-direction: unset;
+    border-bottom: unset;
+    justify-content: space-between;
+    margin-bottom: unset;
+    padding-bottom: 70px;
+  }
 }
 
 .navbar .links {
-  font-weight: bold;
-  margin-top: 0px;
-  text-align: right;
-  text-transform: uppercase;
+  display: none;
+
+  @include respond-to('medium') {
+    display: block;
+    font-weight: bold;
+    margin-top: 0px;
+    text-align: right;
+    text-transform: uppercase;
+  }
 }
 
 .navbar .links a {
@@ -145,22 +168,62 @@ body {
   text-decoration: none;
 }
 
-.text-header {
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 3px solid black;
   margin-bottom: 50px;
+  padding: 25px;
+  
+  .text-header h1 {
+    margin: 0;
+  }
+
+  @include respond-to('medium') {
+    border-bottom: unset;
+    text-align: left;
+    padding: unset;
+
+    .text-header {
+      margin-bottom: unset;
+    }
+
+    .text-header h1 {
+      margin: unset;
+    }
+  }
 }
 
-.text-header p {
+.cta p {
   font-family: 'Roboto Slab';
-  font-size: 40px;
+  font-size: 26px;
   text-transform: uppercase;
+  margin-bottom: 0;
+
+  @include respond-to('medium') {
+    font-size: 40px;
+    margin-bottom: unset;
+  }
+}
+
+.text-header {
+  @include respond-to('medium') {
+    margin-bottom: 50px;
+  }
 }
 
 .text-header h1 {
   font-family: 'Futura';
-  font-size: 70px;
-  line-height: 70px;
-  margin: 0;
+  font-size: 40px;
+  line-height: 40px;
   text-transform: uppercase;
+
+  @include respond-to('medium') {
+    font-size: 70px;
+    line-height: 70px;
+    margin: 0;
+  }
 }
 
 .text-header p {
@@ -183,17 +246,26 @@ body {
 }
 
 .filter-options {
-  align-items: baseline;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+
+  @include respond-to('medium') {
+    align-items: baseline;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 .filter-options .option:first-child {
-  margin-right: 50px;
+  @include respond-to('medium') {
+    margin-right: 50px;
+  }
 }
 
 .filter-options .option:last-child {
-  margin-left: 50px;
+  @include respond-to('medium') {
+    margin-left: 50px;
+  }
 }
 
 .filter-options .option div {

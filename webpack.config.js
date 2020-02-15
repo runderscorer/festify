@@ -20,7 +20,7 @@ module.exports = {
     },
     compress: true,
     watchContentBase: true
-},
+  },
   module: {
     rules: [
       {
@@ -62,5 +62,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     })
-  ]
+  ],
+  watch: true,
 };

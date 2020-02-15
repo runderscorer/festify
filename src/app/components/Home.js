@@ -11,18 +11,22 @@ export default class Home extends Component {
     return (
       <div className='home'>
         <div className='container'>
-          <div className='text-header'>
-            <h1>Whoa.</h1>
-            <h1>Hello music lover!</h1>
+          <div className='welcome'>
+            <div className='text-header'>
+              <h1>Whoa.</h1>
+              <h1>Hello music lover!</h1>
+            </div>
 
-            <p>Are you ready to turn your favorite Spotify artists into a music festival line-up?</p>
+            <div className='cta'>
+              <p>Are you ready to turn your favorite Spotify artists into a music festival line-up?</p>
+            </div>
           </div>
 
           <div>
             <LoginButton />
           </div>
 
-          <div>
+          <div className='bottom-banner'>
             <img src={homepageIcons} />
           </div>
         </div>
