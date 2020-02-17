@@ -41,7 +41,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev:client": "webpack-dev-server --port 3000",
+    "start-dev:client": "webpack-dev-server --port 3000 --host 0.0.0.0",
     "start-dev:server": "nodemon src/server",
     "start:prod": "node src/server",
     "build:prod": "webpack --config webpack.deployment.config.js"

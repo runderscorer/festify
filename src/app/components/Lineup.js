@@ -12,21 +12,24 @@ const getDetails = (timeRange) => {
       return {
         header: posterHeader,
         footer: volcanoFooter,
-        name: 'Volcanojam'
+        name: 'Volcanojam',
+        footerClassName: 'volcano-jam'
       }
       break;
     case 'medium_term':
       return {
         header: posterHeader,
         footer: forestFooter,
-        name: 'Forestfest'
+        name: 'Forestfest',
+        footerClassName: 'forrestfest'
       }
       break;
     case 'long_term':
       return {
         header: posterHeader,
         footer: unholyFooter,
-        name: 'Unholy Space'
+        name: 'Unholy Space',
+        footerClassName: 'unholy-space'
       }
       break;
     default:
@@ -92,7 +95,8 @@ export default class Lineup extends Component {
     const { 
       header,
       footer,
-      name
+      name,
+      footerClassName
     } = getDetails(timeRange);
 
     return (
@@ -106,7 +110,6 @@ export default class Lineup extends Component {
             <div id='poster'>
               <div id='poster-layout'>
                 <div className='header'>
-                  <img src={header} />
                   <div className='header-text'>
                     { displayName ? <h3>{displayName}'s</h3> : null }
                     <h1>{ name } { new Date().getFullYear() }</h1>
@@ -116,7 +119,8 @@ export default class Lineup extends Component {
                 { groupLineup(artists) }
 
                 <div className='footer'>
-                  <img src={footer} />
+                  <div className={footerClassName}>
+                  </div>
                 </div>
               </div>
             </div>

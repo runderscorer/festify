@@ -4,7 +4,7 @@ import festifyLogo from '../assets/images/festify_logo.png';
 
 const NavBar = ({ loggedIn }) => (
   <div className='navbar'>
-    <img src={festifyLogo} />
+    <img className='logo' src={festifyLogo} />
     <div className='links'>
       <Link to='/'>Home</Link>
       <Link to='/about'>About</Link>

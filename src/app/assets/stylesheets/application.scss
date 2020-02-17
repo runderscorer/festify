@@ -134,12 +134,12 @@ body {
 
 .navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   padding-bottom: 50px;
   border-bottom: 3px solid black;
 
   @include respond-to('medium') {
-    flex-direction: unset;
+    flex-direction: row;
     border-bottom: unset;
     justify-content: space-between;
     margin-bottom: unset;
@@ -296,18 +296,6 @@ body {
   text-transform: uppercase;
 }
 
-#poster {
-  background: white;
-  height: 688px;
-  width: 688px;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 100;
-}
-
 .lineup {
   position: fixed;
   top: 0;
@@ -331,7 +319,11 @@ body {
   cursor: pointer;
   justify-content: flex-end;
   margin: auto;
-  width: 689px;
+  width: 95%;
+
+  @include respond-to('medium') {
+    width: 689px;
+  }
 }
 
 .poster-container .close h1 {
@@ -349,82 +341,235 @@ body {
   max-height: calc(100vh - 50px);
 }
 
+#poster {
+  background: white;
+  width: 95%;
+  position: relative; 
+  margin: 0 auto;
+  z-index: 100;
+
+  @include respond-to('medium') {
+    height: 688px;
+    width: 688px;
+  }
+}
+
+#poster:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
 #poster .header {
   position: relative;
+  flex: 1;
+
+  @include respond-to('medium') {
+    height: 280px;
+  }
+}
+
+#poster .header:before {
+  content: '';
+  display: block;
+  padding-top: 42%;
 }
 
 #poster .header-text {
   position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/poster_header.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   color: #3D74DD;
   text-align: center;
   text-transform: uppercase;
-  top: 40;
-  width: 100%;
+  padding-top: .5em;
+
+  @include respond-to('medium') {
+    padding-top: 30px;
+  }
 }
 
 #poster .header-text h3 {
   font-family: Futura;
+  font-size: 3vw;
   margin: 5px;
+
+  @include respond-to('medium') {
+    font-size: 30px;
+  }
 }
 
 #poster .header-text h1 {
   font-family: Futura;
+  font-size: 6vw;
   margin: 5px;
+
+  @include respond-to('medium') {
+    font-size: 50px;
+  }
 }
 
 #poster-layout {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 688px;
+
+  @include respond-to('medium') {
+    height: 688px;
+  }
 }
 
 #poster-layout .footer {
-  padding-bottom: 20px;
+  position: relative;
+  flex: 1;
+}
+
+#poster-layout .footer:before {
+  content: '';
+  display: block;
+  padding-top: 35%;
 }
 
 .acts {
   font-family: 'Futura';
-  height: 150px;
   text-transform: uppercase;
+  flex: 3;
+  margin-top: -20%;
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  justify-content: space-between;
+  z-index: 999;
+
+  @include respond-to('medium') {
+    margin-top: -18%;
+  }
 }
 
 .acts .headliner {
-  font-size: 40px;
-  text-align: center;
   position: relative;
-  top: -100;
+  font-size: 8vw;
+  text-align: center;
+
+  @include respond-to('medium') {
+    font-size: 50px;
+  }
 }
 
 .acts .co_headliner {
-  font-size: 30px;
+  font-size: 5vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   position: relative;
-  top: -95;
+
+  @include respond-to('medium') {
+    font-size: 35px;
+  }
 }
 
 .acts .top_bill {
-  font-size: 20px;
+  font-size: 3vw;
   display: flex;
   justify-content: space-around;
   position: relative;
-  top: -85;
+
+  @include respond-to('medium') {
+    font-size: 25px;
+  }
 }
 
 .acts .supporting {
   position: relative;
-  top: -75;
-  font-size: 12px;
-  padding: 0 10px;
+  font-size: 2vw;
   text-align: center;
   overflow: hidden;
+
+  @include respond-to('medium') {
+    font-size: 15px;
+  }
 }
 
 .acts .supporting span {
   display: inline-block;
-  margin: 2px;
-  width: 15%;
+  margin: .2em; 
   vertical-align: middle;
+
+  &:before {
+    content: '  ';
+  }
+
+  &:after {
+    content: '  ';
+  }
+}
+
+.volcano-jam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/volcano_footer.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-to('medium') {
+    height: 231px;
+    background-size: unset;
+    width: unset;
+    margin: unset;
+  }
+}
+
+.forrestfest {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/forest_footer.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-to('medium') {
+    height: 211px;
+    background-size: unset;
+    width: unset;
+    margin: unset;
+  }
+}
+
+.unholy-space {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/unholy_footer.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-to('medium') {
+    height: 238px;
+    background-size: unset;
+    width: unset;
+    margin: unset;
+  }
 }
