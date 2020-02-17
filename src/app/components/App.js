@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import NavBar from './NavBar';
 import Main from './Main';
+import MobileLogout from './MobileLogout';
 import { getUserInfo, refreshToken } from '../helpers/spotify';
 
 export default class App extends React.Component {
@@ -68,6 +69,7 @@ export default class App extends React.Component {
       <div className={`app ${backgroundColor}`}>
         <NavBar loggedIn={token ? true : false} />
         <Main token={token} displayName={displayName} setBackgroundColor={this.setBackgroundColor} />
+        {token ? <MobileLogout /> : null}
       </div>
     )
   }

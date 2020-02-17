@@ -573,3 +573,20 @@ body {
     margin: unset;
   }
 }
+
+.mobile-logout {
+  display: flex;
+  border-top: 3px solid black;
+  justify-content: center;
+  padding-top: 20px;
+
+  a {
+    color: black;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  @include respond-to('medium') {
+    display: none;
+  }
+}
