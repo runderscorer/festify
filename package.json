@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Spotify companion app",
   "main": "webpack.config.js",
+  "engines": {
+    "node": "11.6.0"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
@@ -44,7 +47,7 @@
     "start-dev:client": "webpack-dev-server --port 3000 --host 0.0.0.0",
     "start-dev:server": "nodemon src/server",
     "start:prod": "node src/server",
-    "build:prod": "webpack --config webpack.deployment.config.js"
+    "build": "webpack --config webpack.deployment.config.js"
   },
   "author": "Rick Rieta",
   "license": "ISC"
