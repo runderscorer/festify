@@ -308,9 +308,19 @@ body {
 }
 
 .poster-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
+  height: 100vh;
   left: 0;
   right: 0;
+  top: 0;
+
+  @include respond-to('medium') {
+    display: block;
+    position: relative;
+  }
 }
 
 .poster-container .close {
@@ -331,9 +341,13 @@ body {
 }
 
 .poster-container .download {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  display: none;
+
+  @include respond-to('medium') {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 .poster-sections {
