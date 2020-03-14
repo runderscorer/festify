@@ -26,6 +26,7 @@ export default class App extends React.Component {
     const refreshCookie = document.cookie.match(/refresh=([^;]*).*$/);
     const token = tokenCookie ? tokenCookie[1] : null;
     const refresh =  refreshCookie ? refreshCookie[1] : null;
+    const params = new URL(window.location).searchParams;
 
     if (token) {
       this.setToken(token);
@@ -35,6 +36,7 @@ export default class App extends React.Component {
         this.setToken(response.data.access_token)
       });
     } else {
+      window.sessionStorage.setItem('referrer', params.get('referrer'));
       return null;
     }
   }

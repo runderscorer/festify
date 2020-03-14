@@ -408,6 +408,25 @@ body {
   }
 }
 
+#poster .guest-header-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/npo_header.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: #3D74DD;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: .5em;
+
+  @include respond-to('medium') {
+    padding-top: 30px;
+  }
+}
+
 #poster .header-text h3 {
   font-family: Futura;
   font-size: 3vw;
@@ -582,6 +601,31 @@ body {
 
   @include respond-to('medium') {
     height: 238px;
+    background-size: unset;
+    width: unset;
+    margin: unset;
+  }
+}
+
+#poster-layout .guest-footer-container:before {
+  content: '';
+  display: block;
+  padding-top: 40%;
+}
+
+.guest-footer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('../images/npo_footer.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-to('medium') {
     background-size: unset;
     width: unset;
     margin: unset;

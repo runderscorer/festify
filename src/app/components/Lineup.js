@@ -1,34 +1,37 @@
 import React, { Component } from 'react';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
-import forestFooter from '../assets/images/forest_footer.png';
-import volcanoFooter from '../assets/images/volcano_footer.png';
-import posterHeader from '../assets/images/poster_header.png';
-import unholyFooter from '../assets/images/unholy_footer.png';
 
 const getDetails = (timeRange) => {
+  const displayGuestFooter = window.sessionStorage.getItem('referrer') === 'npo3fm';
+
+  if (displayGuestFooter) {
+    return {
+      name: 'NPO 3FM LINE-UP',
+      headerClassName: 'guest-header-text',
+      footerClassName: 'guest-footer'
+    }
+  }
+
   switch (timeRange) {
     case 'short_term':
       return {
-        header: posterHeader,
-        footer: volcanoFooter,
         name: 'Volcanojam',
+        headerClassName: 'header-text',
         footerClassName: 'volcano-jam'
       }
       break;
     case 'medium_term':
       return {
-        header: posterHeader,
-        footer: forestFooter,
         name: 'Forestfest',
+        headerClassName: 'header-text',
         footerClassName: 'forrestfest'
       }
       break;
     case 'long_term':
       return {
-        header: posterHeader,
-        footer: unholyFooter,
         name: 'Unholy Space',
+        headerClassName: 'header-text',
         footerClassName: 'unholy-space'
       }
       break;
@@ -93,9 +96,8 @@ export default class Lineup extends Component {
     } = this.props;
 
     const { 
-      header,
-      footer,
       name,
+      headerClassName,
       footerClassName
     } = getDetails(timeRange);
 
@@ -110,7 +112,7 @@ export default class Lineup extends Component {
             <div id='poster'>
               <div id='poster-layout'>
                 <div className='header'>
-                  <div className='header-text'>
+                  <div className={headerClassName}>
                     { displayName ? <h3>{displayName}'s</h3> : null }
                     <h1>{ name } { new Date().getFullYear() }</h1>
                   </div>
@@ -118,7 +120,7 @@ export default class Lineup extends Component {
 
                 { groupLineup(artists) }
 
-                <div className='footer'>
+                <div className={`footer ${footerClassName === 'guest-footer' ? 'guest-footer-container' : ''}`}>
                   <div className={footerClassName}>
                   </div>
                 </div>
