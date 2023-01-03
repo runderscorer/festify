@@ -4,7 +4,7 @@
   "description": "Spotify companion app",
   "main": "webpack.config.js",
   "engines": {
-    "node": "11.6.0"
+    "node": "18.12.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
