@@ -3,33 +3,35 @@ var webpack = require('webpack');
 var Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: ['babel-polyfill', './src/app/index.js'],
+  entry: ['@babel/polyfill', './src/app/index.js'],
   output: {
     path: path.join(__dirname, './dist'),
     filename: 'bundle.js',
     publicPath: '/assets/'
   },
   devServer: {
-    contentBase: path.join(__dirname, './src/app/assets/'),
-    filename: 'bundle.js',
-    publicPath: '/assets/',
+    static: path.join(__dirname, './src/app/assets/'),
     proxy: {
       '/api': {
         target: 'http://localhost:9000'
       }
     },
     compress: true,
-    watchContentBase: true
+    devMiddleware: {
+      publicPath: '/assets/'
+    }
   },
   module: {
     rules: [
       {
         test: /.jsx?$/,
-        loader: 'babel-loader',
         include: path.join(__dirname, '/src/app'),
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'env', 'react']
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react']
+          }
         }
       },
       {
@@ -62,6 +64,5 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     })
-  ],
-  watch: true,
+  ]
 };
