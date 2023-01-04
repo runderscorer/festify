@@ -112,6 +112,7 @@ export default class Lineup extends Component {
             <div id='poster'>
               <div id='poster-layout'>
                 <div className='header'>
+                  <div className='spotify-logo' />
                   <div className={headerClassName}>
                     { displayName ? <h3>{displayName}'s</h3> : null }
                     <h1>{ name } { new Date().getFullYear() }</h1>

@@ -389,6 +389,17 @@ body {
   padding-top: 42%;
 }
 
+#poster .spotify-logo {
+  background: url('../images/spotify_icon_white.png');
+  background-size: contain;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 0;
+  margin: 10px;
+  z-index: 9999;
+}
+
 #poster .header-text {
   position: absolute;
   top: 0;
