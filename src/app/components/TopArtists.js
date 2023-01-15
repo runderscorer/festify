@@ -11,7 +11,7 @@ export default class TopArtists extends React.Component {
     super(props);
 
     this.state = {
-      artists: [],
+      artistsInfo: [],
       type: 'artists',
       timeRange: this.timeRange(),
       displayModal: false,
@@ -49,14 +49,14 @@ export default class TopArtists extends React.Component {
     const cachedArtists = sessionStorage.getItem(`artists[${timeRange}]`);
 
     if (cachedArtists) {
-      this.setState({ artists: JSON.parse(cachedArtists) });
+      this.setState({ artistsInfo: JSON.parse(cachedArtists) });
       return;
     }
 
     const response = await getTopArtistsOrTracks(this.props.token, this.state.type, timeRange);
     const { data: { items } } = response;
 
-    this.setState({ artists: items.map(item => item.name) });
+    this.setState({ artistsInfo: items.map(item => ({ name: item.name, url: item.external_urls.spotify })) });
     sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
   }
 
@@ -67,7 +67,7 @@ export default class TopArtists extends React.Component {
 
   render() {
     const { 
-      artists, 
+      artistsInfo, 
       displayModal,
       timeRange
     } = this.state;
@@ -102,7 +102,7 @@ export default class TopArtists extends React.Component {
           { 
             displayModal ? 
               <Lineup 
-                artists={artists} 
+                artistsInfo={artistsInfo} 
                 displayName={displayName}
                 timeRange={timeRange} 
                 clickHandler={this.closeModal} 

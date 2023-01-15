@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+import ArtistLink from './ArtistLink';
 
 const getDetails = (timeRange) => {
   const displayGuestFooter = window.sessionStorage.getItem('referrer') === 'npo3fm';
@@ -40,7 +41,7 @@ const getDetails = (timeRange) => {
   }
 }
 
-const groupLineup = (artists) => {
+const groupLineup = (artistsInfo) => {
   const [
     first,
     second,
@@ -49,23 +50,25 @@ const groupLineup = (artists) => {
     fifth,
     sixth,
     ...rest
-  ] = artists;
+  ] = artistsInfo;
 
-  if (artists.length) {
+  if (artistsInfo.length) {
     return (
       <div className='acts'>
-        <div className='headliner'>{first}</div>
+        <div className='headliner'>
+          <ArtistLink name={first.name} url={first.url} />
+        </div>
         <div className='co_headliner'>
-          <span>{second}</span>
-          <span>{third}</span>
+          <ArtistLink name={second.name} url={second.url} />
+          <ArtistLink name={third.name} url={third.url} />
         </div>
         <div className='top_bill'>
-          <span>{fourth}</span>
-          <span>{fifth}</span>
-          <span>{sixth}</span>
+          <ArtistLink name={fourth.name} url={fourth.url} />
+          <ArtistLink name={fifth.name} url={fifth.url} />
+          <ArtistLink name={sixth.name} url={sixth.url} />
         </div>
         <div className='supporting'>
-          { rest.map(artist => <span key={artist}>{artist}</span>) }
+          { rest.map(artist => <ArtistLink key={artist} name={artist.name} url={artist.url} />) }
         </div>
       </div>
     )
@@ -89,7 +92,7 @@ export default class Lineup extends Component {
 
   render() {
     const { 
-      artists, 
+      artistsInfo, 
       clickHandler, 
       displayName,
       timeRange 
@@ -119,7 +122,7 @@ export default class Lineup extends Component {
                   </div>
                 </div>
 
-                { groupLineup(artists) }
+                { groupLineup(artistsInfo) }
 
                 <div className={`footer ${footerClassName === 'guest-footer' ? 'guest-footer-container' : ''}`}>
                   <div className={footerClassName}>
