@@ -6,7 +6,7 @@ const LoginButton = (props) => {
   const redirectUri = encodeURIComponent(process.env.REACT_APP_REDIRECT_URI);
   const clientId = process.env.REACT_APP_CLIENT_ID;
   const responseType = 'code';
-  const scope = encodeURIComponent('user-read-email user-top-read');
+  const scope = encodeURIComponent('user-top-read');
 
   const loginLink = `${authLink}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=${responseType}`
 
