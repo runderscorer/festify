@@ -57,7 +57,9 @@ export default class TopArtists extends React.Component {
     const { data: { items } } = response;
 
     this.setState({ artistsInfo: items.map(item => ({ name: item.name, url: item.external_urls.spotify })) });
-    sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(this.state.artists));
+    
+    const { artistsInfo } = this.state;
+    sessionStorage.setItem(`artists[${timeRange}]`, JSON.stringify(artistsInfo));
   }
 
   timeRange() {
